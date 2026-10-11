@@ -8,7 +8,7 @@ GitHubのPull Requestをローカルで効率的にレビューするための�
 - ダウンロードと使い方: <https://serpiff.com>
 - 配布物: [Releases](https://github.com/serpiff/serpiff/releases/latest)
 
-このリポジトリには配布物と、サイトの公開に使うファイルだけを置いています。**ソースコードは公開していません。**
+このリポジトリには配布物、サイトの公開に使うファイル、Claude Codeのmodだけを置いています。**アプリのソースコードは公開していません。**`claude-code/`にあるClaude CodeのmodはMITライセンスです。
 
 ## インストール
 
@@ -121,6 +121,16 @@ C / C++には`compile_commands.json`（CMake、Meson、Bearなどで作れます
 
 > [!NOTE]
 > 上の画像やアニメーションは最新のバージョンと異なる場合があります。
+
+## Claude Codeのmod
+
+Claude Codeのターミナルのセッションで`/serpiff`を実行すると、ワークツリーやPull Requestをserpiffで開けます。プロンプトのフッターには、セッションのワークツリーのレビューがどこまで進んだかをViewedの数で表示します。進み具合の表示にはserpiff 0.1.3以降が必要です。Claude Codeで次のコマンドを実行して入れます。
+
+```
+/plugin install serpiff --marketplace serpiff/serpiff
+```
+
+marketplaceを追加するか聞かれたら`y`と答え、入れる範囲を選びます。詳しくは英語の[`claude-code/README.md`](claude-code/README.md)をご覧ください。
 
 ## 問い合わせ
 
