@@ -1,0 +1,14 @@
+{
+  "name": "serpiff",
+  "owner": { "name": "serpiff" },
+  "metadata": {
+    "description": "Claude Code mods for serpiff, a local code review tool."
+  },
+  "plugins": [
+    {
+      "name": "serpiff",
+      "source": "./claude-code",
+      "description": "Use serpiff, a local code review tool, from Claude Code sessions."
+    }
+  ]
+}

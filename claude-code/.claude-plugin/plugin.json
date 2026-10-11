@@ -1,0 +1,9 @@
+{
+  "name": "serpiff",
+  "version": "0.2.0",
+  "description": "Use serpiff, a local code review tool, from Claude Code sessions.",
+  "author": { "name": "serpiff", "url": "https://serpiff.com" },
+  "license": "MIT",
+  "homepage": "https://serpiff.com",
+  "repository": "https://github.com/serpiff/serpiff"
+}

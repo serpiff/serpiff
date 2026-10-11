@@ -1,0 +1,3 @@
+# Written by the engine when an interactive session loads the mod
+.claude-plugin/types/
+tsconfig.json
