@@ -130,7 +130,7 @@ Claude Codeのターミナルのセッションで`/serpiff`を実行すると�
 /plugin install serpiff --marketplace serpiff/serpiff
 ```
 
-marketplaceを追加するか聞かれたら`y`と答え、入れる範囲を選びます。詳しくは英語の[`claude-code/README.md`](claude-code/README.md)をご覧ください。
+marketplaceを追加するか聞かれたら`y`と答え、入れる範囲を選びます。詳しくは英語の[`claude-code/README.md`](https://github.com/serpiff/serpiff/blob/main/claude-code/README.md)をご覧ください。
 
 ## 問い合わせ
 
