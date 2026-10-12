@@ -8,7 +8,7 @@ GitHubのPull Requestをローカルで効率的にレビューするための�
 - ダウンロードと使い方: <https://serpiff.com>
 - 配布物: [Releases](https://github.com/serpiff/serpiff/releases/latest)
 
-このリポジトリには配布物、サイトの公開に使うファイル、Claude Codeのmodだけを置いています。**アプリのソースコードは公開していません。**`claude-code/`にあるClaude CodeのmodはMITライセンスです。
+このリポジトリには配布物、サイトの公開に使うファイル、Claude Codeのmod、Chrome拡張だけを置いています。**アプリのソースコードは公開していません。**`claude-code/`にあるClaude Codeのmodと`chrome/`にあるChrome拡張はMITライセンスです。
 
 ## インストール
 
@@ -131,6 +131,10 @@ Claude Codeのターミナルのセッションで`/serpiff`を実行すると�
 ```
 
 marketplaceを追加するか聞かれたら`y`と答え、入れる範囲を選びます。詳しくは英語の[`claude-code/README.md`](https://github.com/serpiff/serpiff/blob/main/claude-code/README.md)をご覧ください。
+
+## Chrome拡張
+
+GitHubのPull Requestのページで、ツールバーのボタンかヘッダーのserpiffのロゴのボタン（Pull Requestの一覧では各行の右端のロゴのボタン）から、そのPull Requestをserpiffで開けます。serpiff 0.1.4以降が必要です。`git clone --depth 1 https://github.com/serpiff/serpiff`でこのリポジトリを手元に置き、`chrome://extensions`でデベロッパーモードをオンにして、「パッケージ化されていない拡張機能を読み込む」で`chrome/`を選びます。詳しくは英語の[`chrome/README.md`](https://github.com/serpiff/serpiff/blob/main/chrome/README.md)をご覧ください。
 
 ## 問い合わせ
 
