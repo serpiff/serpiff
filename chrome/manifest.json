@@ -1,0 +1,29 @@
+{
+  "manifest_version": 3,
+  "name": "serpiff",
+  "description": "Open the GitHub pull request you are viewing in serpiff, a local code review tool.",
+  "version": "0.1.4",
+  "icons": {
+    "16": "icons/16.png",
+    "32": "icons/32.png",
+    "48": "icons/48.png",
+    "128": "icons/128.png"
+  },
+  "action": {
+    "default_title": "Open in serpiff",
+    "default_icon": {
+      "16": "icons/16.png",
+      "32": "icons/32.png"
+    }
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://github.com/*"],
+      "js": ["normalize.js", "logo.js", "content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
