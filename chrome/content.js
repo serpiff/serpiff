@@ -6,8 +6,8 @@
   const ROW_MARK = 'data-serpiff-row'; // list links; separate from MARK so the PR page's "exactly one" check ignores them
   const LIST_PATH = /^\/(?:[^/]+\/[^/]+\/)?pulls\/?$/; // /pulls and /<owner>/<name>/pulls (the query is not in pathname)
   const ROW_TITLE_LINK = 'a[data-testid="listitem-title-link"]';
-  const ROW_META = '[class*="MetadataContainer-module__container"]';
-  const CODE_BUTTON = 'button[class*="PullRequestCodeButton"]';
+  const ROW_TITLE_CONTAINER = '[data-listview-item-title-container]';
+  const HEADER_ACTIONS = '[data-component="PH_Actions"]';
   const SVG_NS = 'http://www.w3.org/2000/svg';
 
   let lastIsPr = null;
@@ -29,13 +29,30 @@
     }
   }
 
-  // Where the button goes, in order of preference (checked against GitHub's PR header, 2026-10-12):
+  // The PR header's Code button: a button in the header actions whose text (aria-label when icon-only) is Code.
+  // Found by label, not by GitHub's hashed class names, which change.
+  function isCodeButton(element) {
+    return (
+      element.matches('button') &&
+      (element.getAttribute('aria-label') === 'Code' || element.textContent.trim() === 'Code')
+    );
+  }
+
+  function findCodeButton() {
+    for (const candidate of document.querySelectorAll(`${HEADER_ACTIONS} button`)) {
+      if (isCodeButton(candidate)) return candidate;
+    }
+    return null;
+  }
+
+  // Where the button goes, in order of preference (checked against GitHub's PR header, 2026-10-13; the Code
+  // button is found by its label inside the header actions, since GitHub's hashed class names change):
   //  1. just after the Code button (the rightmost of the row), inside the gap-spaced row that holds it;
   //  2. the end of that row (the first child div of the React header's actions);
   //  3. the start of the classic header's actions (.gh-header-actions).
   // Returns { parent, before } (before === null means append), or null when nothing matches.
   function findSlot() {
-    const code = document.querySelector(CODE_BUTTON);
+    const code = findCodeButton();
     if (code && code.parentElement) {
       // Skip our own buttons, so a button already right after Code counts as in place.
       let before = code.nextSibling;
@@ -44,7 +61,7 @@
       }
       return { parent: code.parentElement, before };
     }
-    const row = document.querySelector('[data-component="PH_Actions"] > div');
+    const row = document.querySelector(`${HEADER_ACTIONS} > div`);
     if (row) return { parent: row, before: null };
     const legacy = document.querySelector('.gh-header-actions');
     if (legacy) return { parent: legacy, before: legacy.firstChild, legacy: true };
@@ -119,7 +136,8 @@
       button &&
       button.isConnected &&
       button.previousElementSibling &&
-      button.previousElementSibling.matches(CODE_BUTTON)
+      isCodeButton(button.previousElementSibling) &&
+      button.previousElementSibling.closest(HEADER_ACTIONS)
     ) {
       if (button.getAttribute('href') !== href) button.setAttribute('href', href);
       return;
@@ -166,8 +184,16 @@
     return link;
   }
 
-  // The PR list (checked 2026-10-12): each row is li > ... a[data-testid="listitem-title-link"], and the row's
-  // right edge is its MetadataContainer (a flex row with a gap). The logo link goes at the end of it.
+  // The row's right edge is the metadata column: the last child of the row's li (checked 2026-10-13; found by
+  // structure, not by class name). Returns null when that child is the title container or holds the title.
+  function rowMetaContainer(title) {
+    const last = title.closest('li')?.lastElementChild;
+    if (!last || last.contains(title) || last.matches(ROW_TITLE_CONTAINER)) return null;
+    return last;
+  }
+
+  // The PR list: each row is li > ... a[data-testid="listitem-title-link"]. The logo link goes at the end of the
+  // row's metadata column.
   function syncRows() {
     if (!LIST_PATH.test(location.pathname)) {
       // Not a list page: scan nothing unless links may have been inserted.
@@ -179,7 +205,7 @@
     }
     for (const title of document.querySelectorAll(ROW_TITLE_LINK)) {
       const prUrl = normalize(title.href);
-      const container = prUrl && title.closest('li')?.querySelector(ROW_META);
+      const container = prUrl && rowMetaContainer(title);
       if (!container) continue;
       const href = `serpiff://open?url=${encodeURIComponent(prUrl)}`;
       const existing = container.querySelector(`:scope > [${ROW_MARK}]`);

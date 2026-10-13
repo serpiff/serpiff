@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "serpiff",
   "description": "Open the GitHub pull request you are viewing in serpiff, a local code review tool.",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "icons": {
     "16": "icons/16.png",
     "32": "icons/32.png",
