@@ -1,12 +1,12 @@
 // Content script (classic script; normalize.js is loaded before it).
 (function () {
   const normalize = globalThis.serpiffNormalizePrUrl;
+  const isPrListPath = globalThis.serpiffIsPrListPath;
   const MARK = 'data-serpiff-open';
 
   const ROW_MARK = 'data-serpiff-row'; // list links; separate from MARK so the PR page's "exactly one" check ignores them
-  const LIST_PATH = /^\/(?:[^/]+\/[^/]+\/)?pulls\/?$/; // /pulls and /<owner>/<name>/pulls (the query is not in pathname)
-  const ROW_TITLE_LINK = 'a[data-testid="listitem-title-link"]';
   const ROW_TITLE_CONTAINER = '[data-listview-item-title-container]';
+  const ROW_TITLE_LINK = `${ROW_TITLE_CONTAINER} a[href*="/pull/"]`; // no data-testid on /pulls/inbox
   const HEADER_ACTIONS = '[data-component="PH_Actions"]';
   const SVG_NS = 'http://www.w3.org/2000/svg';
 
@@ -192,10 +192,10 @@
     return last;
   }
 
-  // The PR list: each row is li > ... a[data-testid="listitem-title-link"]. The logo link goes at the end of the
-  // row's metadata column.
+  // The PR list: each row is li > ... [data-listview-item-title-container] a[href*="/pull/"]. The logo link goes at
+  // the end of the row's metadata column.
   function syncRows() {
-    if (!LIST_PATH.test(location.pathname)) {
+    if (!isPrListPath(location.pathname)) {
       // Not a list page: scan nothing unless links may have been inserted.
       if (hadRows) {
         for (const element of document.querySelectorAll(`[${ROW_MARK}]`)) element.remove();
@@ -203,10 +203,14 @@
       }
       return;
     }
+    // A title column may hold several PR links; only the first per row that normalizes to a PR (in DOM order;
+    // normally the title) counts.
+    const seen = new Set();
     for (const title of document.querySelectorAll(ROW_TITLE_LINK)) {
       const prUrl = normalize(title.href);
       const container = prUrl && rowMetaContainer(title);
-      if (!container) continue;
+      if (!container || seen.has(container)) continue;
+      seen.add(container);
       const href = `serpiff://open?url=${encodeURIComponent(prUrl)}`;
       const existing = container.querySelector(`:scope > [${ROW_MARK}]`);
       if (existing) {

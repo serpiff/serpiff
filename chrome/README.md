@@ -11,8 +11,9 @@ A Chrome extension that opens the GitHub pull request you are viewing in
   (the same as `serp session add <PR URL> --open`).
 - A serpiff logo button (tooltip: `Open in serpiff`) is also added to the PR header, just after the Code button. It is a plain link to the same
   `serpiff://` URL. If the header is not found, nothing is added.
-- On the pull request lists (`/pulls` and `/<owner>/<name>/pulls`, with or without filters), each row gets a small
-  serpiff logo button at the right end of its metadata. The toolbar button stays disabled there (it is not a single PR).
+- On the pull request lists (`/pulls` and its tabs such as `/pulls/inbox`, and `/<owner>/<name>/pulls` with its
+  `/<user>` and `/<filter>/<user>` paths, with or without query filters), each row gets a small serpiff logo button
+  at the right end of its metadata. The toolbar button stays disabled there (it is not a single PR).
 - On every other page the toolbar button is disabled (gray) and nothing is added.
 - The URL passed to serpiff is always normalized to `https://github.com/<owner>/<name>/pull/<n>`
   (no trailing slash, sub-path, query or fragment).

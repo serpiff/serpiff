@@ -1,6 +1,7 @@
-// Normalizes a GitHub pull request URL to https://github.com/<owner>/<name>/pull/<n>.
+// Normalizes a GitHub pull request URL to https://github.com/<owner>/<name>/pull/<n>, and tells whether a
+// pathname is a pull request list (/pulls, /pulls/<tab>, /<owner>/<name>/pulls[/<user>|/<filter>/<user>]).
 // A classic script: the content script loads it before content.js and reads
-// globalThis.serpiffNormalizePrUrl; Node tests read module.exports.
+// globalThis.serpiffNormalizePrUrl and globalThis.serpiffIsPrListPath; Node tests read module.exports.
 (function () {
   const NAME = /^[A-Za-z0-9._-]+$/;
   const NUMBER = /^[0-9]+$/;
@@ -28,8 +29,18 @@
     return `https://github.com/${owner}/${name}/pull/${number}`;
   }
 
+  // `[^/]+` takes any tab, user or filter name, so tabs are not listed. /o/n/pulls/12 is a list too (the user "12"),
+  // never a PR; only /pull/<n> is a PR.
+  const LIST_PATH = /^\/(?:[^/]+\/[^/]+\/)?pulls(?:\/[^/]+){0,2}\/?$/;
+
+  // True when `pathname` (location.pathname: no query or fragment) is a pull request list page.
+  function isPrListPath(pathname) {
+    return typeof pathname === 'string' && LIST_PATH.test(pathname);
+  }
+
   globalThis.serpiffNormalizePrUrl = normalizePrUrl;
+  globalThis.serpiffIsPrListPath = isPrListPath;
   if (typeof module !== 'undefined' && module.exports) {
-    module.exports = { normalizePrUrl };
+    module.exports = { normalizePrUrl, isPrListPath };
   }
 })();
