@@ -44,12 +44,23 @@ A Claude Code mod (a function-hooks plugin) that lets a Claude Code session use
     The mod never starts serpiff for this (`serp session status` does not), and keeps asking
     so the mode appears once a session exists.
 
+- The mod's own texts (the footer's `viewed` / `no changes`, the `/serpiff` description, `Opened in serpiff.`,
+  `serp exited with <code>` and `Could not run serp: <reason>`) follow serpiff's display language, English or Japanese.
+  The language is read from the `language` field of the same `serp session status <cwd> --json` output
+  (an unknown value is English), so it follows the app's language setting within 30 seconds or at the end of a turn;
+  `/serpiff` is registered again with a description in the new language when it changes.
+  When it cannot be read (serpiff is not running, `serp` fails, or an older `serp` without the field), the OS language is used
+  (the first entry of `defaults read -g AppleLanguages`, asked once per load of the mod; Japanese if its language part is `ja`, as in `ja-JP`).
+  The `<label>` (`PR #<n>` or the branch name), the argument hint and the output of `serp` itself are not translated.
+
 ## Requirements
 
 - `serp` on the `PATH` of the Claude Code session. It starts serpiff if it is not running.
 - Claude Code 2.1.296 (the version this mod was checked with).
 - serp 0.1.0 or later for `/serpiff`; serp 0.1.3 or later for the progress mode (the first release with
   `serp session status`). With an older `serp` the mode is not shown and `/serpiff` works as before.
+- For the texts to follow serpiff's language (the footer and `/serpiff` both), a `serp` whose
+  `session status --json` prints `language`; with an older one the OS language is used.
 - A CLI session (the mod runs `serp` with `$.process.run`, which is available there only).
 
 ## Install

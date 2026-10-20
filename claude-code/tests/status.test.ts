@@ -36,9 +36,18 @@ const branch = (total: number, viewed: number, filesTotal = total, filesViewed =
 const ok = (stdout: string) => done({ exitCode: 0, stdout, stderr: '' })
 
 // Hooks the plugin runs beneath: records the footer modes and the argv of every serp call.
-const setup = (on: any, answer: (argv: readonly string[], n: number) => any) => {
+// `defaults read -g AppleLanguages` is the mod's OS-language question; it is answered apart
+// (English unless `os` says otherwise) and counted in `osCalls`, not in `calls`.
+const osEnglish = () => ok('(\n    "en-US"\n)\n')
+
+const setup = (
+  on: any,
+  answer: (argv: readonly string[], n: number) => any,
+  os: (argv: readonly string[]) => any = osEnglish,
+) => {
   const state = { invalidations: 0 }
   const calls: { argv: readonly string[]; init: any }[] = []
+  const osCalls: { argv: readonly string[]; init: any }[] = []
   on('session.cwd', () => ({ value: '/repo/wt' }))
   on('ui.invalidate', (_$: any, e: any, next: any) => {
     state.invalidations++
@@ -48,6 +57,10 @@ const setup = (on: any, answer: (argv: readonly string[], n: number) => any) => 
   on('command.register', () => ({ value: { command: 'serpiff' } }))
   on('turn.complete', (_$: any, e: any) => ({ text: `answered ${e.answer}` }))
   on('process.run', (_$: any, e: any) => {
+    if (e.argv[0] === 'defaults') {
+      osCalls.push({ argv: e.argv, init: e.init })
+      return os(e.argv)
+    }
     calls.push({ argv: e.argv, init: e.init })
     return answer(e.argv, calls.length)
   })
@@ -75,7 +88,7 @@ const setup = (on: any, answer: (argv: readonly string[], n: number) => any) => 
   const shown = async ($: any) => textOf(await treeOf($)) || undefined
   const footer = async ($: any, engineModes: readonly string[] = []) =>
     textOf(await footerTree($, engineModes))
-  return { calls, state, footer, footerTree, treeOf, shown }
+  return { calls, osCalls, state, footer, footerTree, treeOf, shown }
 }
 
 const start = ($: any) => $.session.start({ cwd: '/repo/wt', surface: null, isInteractive: false })
@@ -191,6 +204,7 @@ test('the cwd is read again on every refresh', async ($, on) => {
   on('command.register', () => ({ value: { command: 'serpiff' } }))
   on('turn.complete', (_$: any, e: any) => ({ text: `answered ${e.answer}` }))
   on('process.run', (_$: any, e: any) => {
+    if (e.argv[0] === 'defaults') return osEnglish()
     ;(calls as string[][]).push([...e.argv])
     return ok(pr(1, 0))
   })

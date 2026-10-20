@@ -19,11 +19,14 @@ Claude Codeのセッションからローカルで動くコードレビューツ
   - 同時に動く`serp session status`は1つだけです。実行中に来た要求は終わった後の1回の実行にまとめます。
   - serpiffが動いていない、ワークツリーのセッションがない、または`serp`が失敗するかタイムアウトしたときはモードを足しません。modはこのためにserpiffを起動せず（`serp session status`も起動しません）、セッションができたときにモードが出るよう、問い合わせを続けます。
 
+- modの文（フッターの`viewed` / `no changes`、`/serpiff`の説明、`Opened in serpiff.`、`serp exited with <code>`、`Could not run serp: <reason>`）はserpiffの表示の言語（英語または日本語）に従います。言語は同じ`serp session status <cwd> --json`の出力の`language`から読みます（未知の値は英語）。そのため、アプリの言語の設定を変えると30秒以内（またはターンの終わり）に追いつき、言語が変わると`/serpiff`も新しい言語の説明で登録し直します。読めないとき（serpiffが動いていない、`serp`が失敗する、このフィールドのない古い`serp`）はOSの言語を使います（`defaults read -g AppleLanguages`の先頭の要素の言語の部分が`ja`（`ja-JP`など）なら日本語で、modを読み込むたびに1回だけ問い合わせます）。ラベル（`PR #<n>`またはブランチ名）、引数のヒント、`serp`自身の出力は訳しません。
+
 ## 必要なもの
 
 - Claude Codeのセッションの`PATH`にある`serp`。serpiffが動いていなければ起動します。
 - Claude Code 2.1.296（このmodで確かめたバージョン）。
 - `/serpiff`にはserp 0.1.0以降、進み具合のモードにはserp 0.1.3以降（`serp session status`が入った最初のリリース）が必要です。古い`serp`ではモードを表示せず、`/serpiff`はこれまでどおり動きます。
+- 文言をserpiffの言語に合わせる（フッターも`/serpiff`も）には、`session status --json`が`language`を出す`serp`が必要です。古い`serp`ではOSの言語を使います。
 - CLIのセッション（modは`$.process.run`で`serp`を実行しますが、これはCLIでだけ使えます）。
 
 ## インストール

@@ -6,10 +6,18 @@ const done = (r: Run) => ({
   value: { ...r, isStdoutTruncated: false, isStderrTruncated: false },
 })
 
+// `defaults read -g AppleLanguages` is the mod's OS-language question: English here.
+const onRun = (on: any, f: (e: any) => any) =>
+  on('process.run', (_$: any, e: any) =>
+    e.argv[0] === 'defaults'
+      ? done({ exitCode: 0, stdout: '(\n    "en-US"\n)\n', stderr: '' })
+      : f(e),
+  )
+
 test('no args uses the session cwd as the target', async ($, on) => {
   const calls: { argv: string[]; init: unknown }[] = []
   on('session.cwd', () => ({ value: '/repo/wt' }))
-  on('process.run', (_$, e) => {
+  onRun(on, e => {
     // The footer mode refresh after the command also runs serp; this file looks at `add` only.
     if (e.argv[2] === 'add') calls.push({ argv: e.argv, init: e.init })
     return done({ exitCode: 0, stdout: '', stderr: '' })
@@ -27,7 +35,7 @@ test('no args uses the session cwd as the target', async ($, on) => {
 test('args become one trimmed argv element with a 60 s timeout', async ($, on) => {
   const calls: { argv: string[]; init: any }[] = []
   on('session.cwd', () => ({ value: '/repo/wt' }))
-  on('process.run', (_$, e) => {
+  onRun(on, e => {
     // The footer mode refresh after the command also runs serp; this file looks at `add` only.
     if (e.argv[2] === 'add') calls.push({ argv: e.argv, init: e.init })
     return done({ exitCode: 0, stdout: '', stderr: '' })
@@ -44,7 +52,7 @@ test('args become one trimmed argv element with a 60 s timeout', async ($, on) =
 
 test('success prints stdout then stderr', async ($, on) => {
   on('session.cwd', () => ({ value: '/repo/wt' }))
-  on('process.run', () => done({ exitCode: 0, stdout: 'http://x/s/1\n', stderr: 'Using the existing worktree\n' }))
+  onRun(on, () => done({ exitCode: 0, stdout: 'http://x/s/1\n', stderr: 'Using the existing worktree\n' }))
 
   const out = await $.command.run({ command: 'serpiff', args: '' })
 
@@ -54,7 +62,7 @@ test('success prints stdout then stderr', async ($, on) => {
 
 test('success with no output says it opened', async ($, on) => {
   on('session.cwd', () => ({ value: '/repo/wt' }))
-  on('process.run', () => done({ exitCode: 0, stdout: ' \n', stderr: '' }))
+  onRun(on, () => done({ exitCode: 0, stdout: ' \n', stderr: '' }))
 
   const out = await $.command.run({ command: 'serpiff', args: '' })
 
@@ -63,7 +71,7 @@ test('success with no output says it opened', async ($, on) => {
 
 test('failure prints the exit code and stderr', async ($, on) => {
   on('session.cwd', () => ({ value: '/repo/wt' }))
-  on('process.run', () => done({ exitCode: 2, stdout: 'ignored', stderr: 'no such PR\n' }))
+  onRun(on, () => done({ exitCode: 2, stdout: 'ignored', stderr: 'no such PR\n' }))
 
   const out = await $.command.run({ command: 'serpiff', args: '#99' })
 
@@ -73,14 +81,14 @@ test('failure prints the exit code and stderr', async ($, on) => {
 
 test('failure with empty stderr falls back to stdout', async ($, on) => {
   on('session.cwd', () => ({ value: '/repo/wt' }))
-  on('process.run', () => done({ exitCode: 1, stdout: 'something\n', stderr: '' }))
+  onRun(on, () => done({ exitCode: 1, stdout: 'something\n', stderr: '' }))
   const withStdout = await $.command.run({ command: 'serpiff', args: '' })
   expect(withStdout.text).toBe('serp exited with 1\nsomething')
 })
 
 test('failure with no output prints only the exit code', async ($, on) => {
   on('session.cwd', () => ({ value: '/repo/wt' }))
-  on('process.run', () => done({ exitCode: 1, stdout: '', stderr: '' }))
+  onRun(on, () => done({ exitCode: 1, stdout: '', stderr: '' }))
 
   const out = await $.command.run({ command: 'serpiff', args: '' })
 
@@ -89,7 +97,7 @@ test('failure with no output prints only the exit code', async ($, on) => {
 
 test('serp that cannot start is reported', async ($, on) => {
   on('session.cwd', () => ({ value: '/repo/wt' }))
-  on('process.run', () => {
+  onRun(on, () => {
     throw new Error('spawn serp ENOENT')
   })
 
