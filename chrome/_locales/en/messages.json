@@ -1,0 +1,14 @@
+{
+  "extName": {
+    "message": "serpiff",
+    "description": "The name of the extension (shown in chrome://extensions and the Chrome Web Store)."
+  },
+  "extDescription": {
+    "message": "Open the GitHub pull request you are viewing in serpiff, a local code review tool.",
+    "description": "The description of the extension (shown in chrome://extensions)."
+  },
+  "openInSerpiff": {
+    "message": "Open in serpiff",
+    "description": "The tooltip of the toolbar button, and the tooltip and accessible name of the serpiff logo buttons added to GitHub pull request pages and lists."
+  }
+}

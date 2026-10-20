@@ -2,6 +2,7 @@
 (function () {
   const normalize = globalThis.serpiffNormalizePrUrl;
   const isPrListPath = globalThis.serpiffIsPrListPath;
+  const OPEN_LABEL = chrome.i18n.getMessage('openInSerpiff'); // the text follows the language of Chrome (_locales/)
   const MARK = 'data-serpiff-open';
 
   const ROW_MARK = 'data-serpiff-row'; // list links; separate from MARK so the PR page's "exactly one" check ignores them
@@ -102,8 +103,8 @@
     link.setAttribute(MARK, '');
     link.className = 'btn';
     link.href = href;
-    link.setAttribute('aria-label', 'Open in serpiff');
-    link.title = 'Open in serpiff';
+    link.setAttribute('aria-label', OPEN_LABEL);
+    link.title = OPEN_LABEL;
     link.style.display = 'inline-flex';
     link.style.alignItems = 'center';
     link.style.justifyContent = 'center';
@@ -165,8 +166,8 @@
     const link = document.createElement('a');
     link.setAttribute(ROW_MARK, href);
     link.href = href;
-    link.setAttribute('aria-label', 'Open in serpiff');
-    link.title = 'Open in serpiff';
+    link.setAttribute('aria-label', OPEN_LABEL);
+    link.title = OPEN_LABEL;
     // The small variant of the PR page's button, so the rows stay their usual height.
     link.className = 'btn btn-sm';
     link.style.display = 'inline-flex';

@@ -1,5 +1,7 @@
 # serpiff for Chrome
 
+English | [日本語](README-ja.md)
+
 A Chrome extension that opens the GitHub pull request you are viewing in
 [serpiff](https://github.com/serpiff/serpiff), a local code review tool.
 
