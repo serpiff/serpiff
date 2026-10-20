@@ -1,5 +1,7 @@
 # serpiff for Claude Code
 
+English | [日本語](README-ja.md)
+
 A Claude Code mod (a function-hooks plugin) that lets a Claude Code session use
 [serpiff](https://github.com/serpiff/serpiff), a local code review tool.
 
