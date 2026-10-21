@@ -1,6 +1,6 @@
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://serpiff.com/img/readme/serpiff-wordmark-dark-tight.svg">
-  <img src="https://serpiff.com/img/readme/serpiff-wordmark-light-tight.svg" alt="serpiff" width="270">
+  <source media="(prefers-color-scheme: dark)" srcset="https://serpiff.com/img/readme/serpiff-wordmark-dark-glass.png">
+  <img src="https://serpiff.com/img/readme/serpiff-wordmark-light-glass.png" alt="serpiff" width="295">
 </picture>
 
 English | [日本語](https://github.com/serpiff/serpiff/blob/main/README-ja.md)
