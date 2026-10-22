@@ -4,6 +4,20 @@ User-facing changes to serpiff, listed by version. The format follows [Keep a Ch
 
 English | [日本語](https://github.com/serpiff/serpiff/blob/main/CHANGELOG-ja.md)
 
+## [0.3.0] - 2026-10-22
+
+### Added
+
+- Paid licenses are now on sale (¥500 a month or ¥3,000 a year). The buy button in the license dialog, the Free plan notice, and the monthly limit notice opens the checkout. After buying, `Manage subscription` lets you manage payments and registered devices. The buy button on the website works too
+
+### Changed
+
+- The app icon shown on macOS versions before macOS 26 now looks the same as the macOS 26 icon
+
+### Fixed
+
+- In the merge dialog, the Cancel button could wrap and overflow after choosing a merge method
+
 ## [0.2.8] - 2026-10-22
 
 ### Added
