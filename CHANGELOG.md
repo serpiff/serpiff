@@ -4,6 +4,19 @@ User-facing changes to serpiff, listed by version. The format follows [Keep a Ch
 
 English | [日本語](https://github.com/serpiff/serpiff/blob/main/CHANGELOG-ja.md)
 
+## [0.3.1] - 2026-10-25
+
+### Changed
+
+- Line breaks inside a comment paragraph are now shown as line breaks, as on GitHub (previously they were joined into one line with a space)
+
+### Fixed
+
+- Reopening a Viewed file with the ▾ in its file header now also opens its changed declarations
+- Pressing Tab inside a dialog could move focus out of the dialog when macOS "Keyboard navigation" was off
+- When dialogs were stacked, Tab, Escape, and shortcuts could reach a dialog behind the front one, and focus could be lost after one closed. The Orca error dialog now also takes focus correctly when it opens during the loading overlay
+- The bottom of the focus ring on the Close button in the What's New dialog shown after an update could be cut off
+
 ## [0.3.0] - 2026-10-22
 
 ### Added
