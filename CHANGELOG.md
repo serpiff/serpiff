@@ -4,6 +4,17 @@ User-facing changes to serpiff, listed by version. The format follows [Keep a Ch
 
 English | [日本語](https://github.com/serpiff/serpiff/blob/main/CHANGELOG-ja.md)
 
+## [0.3.2] - 2026-10-26
+
+### Changed
+
+- Peeking from a type's name (such as a TypeScript class) now shows the whole type declaration, including its methods, not just the declaration line and fields. In TypeScript, peeking from `new Counter()` now opens the class card instead of a list of two definitions (the class and its constructor)
+- Text buttons now look and line up the same way across the app. Primary buttons share one tinted style, and button order, sizes, and the busy state (a small spinner before the label) are consistent. Buttons that open a step to confirm before running now end with "…"
+
+### Fixed
+
+- Peeking from the name of a class with no fields showed only the `class C {` line in the card
+
 ## [0.3.1] - 2026-10-25
 
 ### Changed
