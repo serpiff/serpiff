@@ -4,6 +4,29 @@ User-facing changes to serpiff, listed by version. The format follows [Keep a Ch
 
 English | [日本語](https://github.com/serpiff/serpiff/blob/main/CHANGELOG-ja.md)
 
+## [0.3.3] - 2026-10-28
+
+### Added
+
+- A right panel beside the diff, holding a Claude chat. When closed it keeps a slim column of icons (a rail) to open it from. It runs your local `claude` in the session's worktree, and you can switch the model and mode, answer tool permission requests, and load past conversations
+- The in-app terminal can now open several shells per session, in tabs that can be split side by side. Its toggle moved to the right of the footer
+
+### Changed
+
+- The left sidebar now keeps a slim column of icons (a rail) when closed, and opens one panel at a time. The header button that toggled the sidebar is gone; open panels from the rail. Suggestions and Questions moved to the right panel
+- Dialogs now share the same header and ✕ button, and handle keys and focus the same way across the app
+- Dragging a selection in the Split view now copies only the side where the selection starts (as in GitHub's Split view). Copying from the Unified view no longer includes line numbers and markers
+
+### Fixed
+
+- In Go, files with syntax errors confined to function bodies (such as Go 1.26's `new(expr)`) fell back to a whole-file view instead of being split into declarations
+- In the Markdown Split view, the center line shifted when switching between rendered and raw
+- The Claude chat could not find past conversations in worktrees with long paths
+- Reconnecting the Claude chat dropped the permission cards you had already answered. Quickly changing the model or mode twice could also leave the display out of sync with the actual state
+- When pop-outs or dialogs were stacked, acting on the dialog on top (Escape, a click, or picking an emoji candidate) could also close the pop-out or popover beneath it
+- While a pop-out was open, a dialog opened inside the sidebar card could stay hidden yet take keys; the card is now dimmed and inert while covered
+- Pressing `u` while dragging a column border half-applied the Split / Unified switch; it is now ignored during the drag
+
 ## [0.3.2] - 2026-10-26
 
 ### Changed
