@@ -4,6 +4,21 @@ User-facing changes to serpiff, listed by version. The format follows [Keep a Ch
 
 English | [日本語](https://github.com/serpiff/serpiff/blob/main/CHANGELOG-ja.md)
 
+## [0.3.4] - 2026-10-28
+
+### Added
+
+- Two new ways to reach the setting that creates sessions automatically from review requests. The bottom of the review requests dialog now has a checkbox for each registered repository that you can toggle in place (shown even when there are no requests). The header's gear menu now ends with "Repository settings…", which opens the settings of the session's repository
+
+### Changed
+
+- Creating a session for a PR now makes fewer fetches and GitHub calls, so it is faster. For PRs with a review request, the head and base are fetched ahead of time while polling, so their sessions are created right away
+- Popovers opened from the header (Settings, the "…" menu, the ⚠ notice list, and others) now close and look the same way. Settings and the menu no longer run off the screen in a short window, and open upward when there is no room below. Pressing Escape in a nested popover closes only the inner one
+
+### Fixed
+
+- In the Unified view of a rendered diff, adding or removing rows (such as expanding or collapsing a file) had become slow (since 0.3.3)
+
 ## [0.3.3] - 2026-10-28
 
 ### Added
