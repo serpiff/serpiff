@@ -4,6 +4,25 @@ User-facing changes to serpiff, listed by version. The format follows [Keep a Ch
 
 English | [日本語](https://github.com/serpiff/serpiff/blob/main/CHANGELOG-ja.md)
 
+## [0.3.5] - 2026-10-29
+
+### Added
+
+- In the sidebar's Conversations, a review's card now shows the line-comment and file-comment threads that the review started. You can expand, reply to, resolve and edit them in place, and clicking `path:line` jumps to the thread in the diff. Threads with replies and resolved threads are shown collapsed
+- Question cards now have "Post as comment", which opens a line-comment draft at the same position with the memo and the question and answer as its body. Sending it removes the question
+
+### Changed
+
+- Below a diff line, "Comments" and "✦ Questions" tabs now appear whenever there is at least one comment or question (even when one side has none). A new draft's editor is also placed inside those tabs
+- In the sidebar's Conversations, the description and each item are now separated as cards
+- Buttons, text inputs, selects, checkboxes, tabs, small labels, and error and hint text now look and behave the same across the app. Tabs can also be moved between with ← →, Home and End
+- In the review requests dialog, the dot marking a new request moved to the avatar's top right
+
+### Fixed
+
+- When the auto-run of Viewed patterns showed its confirm dialog, you had to wait before Apply became clickable
+- Focus rings were cut off or hidden on the search bar's `Aa` and `.*`, on panel-heading buttons, and on buttons in the popovers opened from the notice list
+
 ## [0.3.4] - 2026-10-28
 
 ### Added
