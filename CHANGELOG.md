@@ -4,6 +4,17 @@ User-facing changes to serpiff, listed by version. The format follows [Keep a Ch
 
 English | [日本語](https://github.com/serpiff/serpiff/blob/main/CHANGELOG-ja.md)
 
+## [0.3.6] - 2026-11-02
+
+### Added
+
+- When a diff's hidden-lines row (`⋯ N lines hidden`) falls inside a declaration, its left edge now shows the declaration's name (`func Foo` in Go), so you can tell which function or method the changes after the hidden lines belong to
+
+### Fixed
+
+- Setting Viewed from the checkbox on a stuck file header or a declaration's sticky bar left the folded row above the top of the screen. It now scrolls back to where the folded row is visible
+- In the Comments and ✦ Questions tabs below a diff line, pressing ← →, Home or End while a draft with text was open elsewhere left focus on a tab that was not selected. Focus now stays on the selected tab
+
 ## [0.3.5] - 2026-10-29
 
 ### Added
