@@ -4,6 +4,23 @@ User-facing changes to serpiff, listed by version. The format follows [Keep a Ch
 
 English | [日本語](https://github.com/serpiff/serpiff/blob/main/CHANGELOG-ja.md)
 
+## [0.3.7] - 2026-11-04
+
+### Added
+
+- While waiting for the language server, the clicked identifier now shows a moving dotted underline (when there is no answer within 200ms)
+- When peek, implementation, jump or ⌥+click has no result, the reason (still starting, `No definition found`, and so on) is now shown in a bubble at the clicked position instead of a toast at the bottom right
+
+### Changed
+
+- Cmd+click, ⌥+click and similar clicks on a word inside a keyword, string or comment now do nothing instead of asking the language server
+- Go methods are now labeled as Go method expressions, `func (*Server).Handle`, instead of `method Server.Handle`
+
+### Fixed
+
+- A comment inside a Go receiver type or package clause broke the method or package name. Methods that had the broken name lose their Viewed mark once
+- On lines with emoji or similar characters before a word, hover, peek and Usages answered for a different word
+
 ## [0.3.6] - 2026-11-02
 
 ### Added
