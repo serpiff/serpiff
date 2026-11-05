@@ -4,6 +4,12 @@ User-facing changes to serpiff, listed by version. The format follows [Keep a Ch
 
 English | [日本語](https://github.com/serpiff/serpiff/blob/main/CHANGELOG-ja.md)
 
+## [0.3.8] - 2026-11-06
+
+### Fixed
+
+- In the Markdown rendered view, the part before the first heading (such as front matter) could not be folded. It now folds with ▾ like a section and reads `header · N ブロック` when folded. Files without headings now get the sticky bar too
+
 ## [0.3.7] - 2026-11-04
 
 ### Added
