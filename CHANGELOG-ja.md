@@ -4,6 +4,12 @@ serpiffの利用者向けの変更点を、版ごとにまとめています。�
 
 [English](https://github.com/serpiff/serpiff/blob/main/CHANGELOG.md) | 日本語
 
+## [0.3.8] - 2026-11-06
+
+### 修正
+
+- Markdownのrendered表示で、最初の見出しより前の部分（front matterなど）だけ畳めなかったのを直しました。節と同じように▾で畳め、畳むと`header · N ブロック`の行になります。見出しが無いファイルでも、上に張り付く帯が出ます
+
 ## [0.3.7] - 2026-11-04
 
 ### 追加
