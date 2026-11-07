@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>serpiff - Review pull requests declaration by declaration</title>
+<meta name="description" content="A tool for efficiently reviewing GitHub pull requests locally. Read through them declaration by declaration, such as functions and types.">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/icon.png">
+<link rel="stylesheet" href="/style.css">
+<link rel="canonical" href="https://serpiff.com/en/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="serpiff">
+<meta property="og:title" content="serpiff - Review pull requests declaration by declaration">
+<meta property="og:description" content="A tool for efficiently reviewing GitHub pull requests locally. Read through them declaration by declaration, such as functions and types.">
+<meta property="og:url" content="https://serpiff.com/en/">
+<meta property="og:image" content="https://serpiff.com/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="serpiff">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="alternate" hreflang="ja" href="https://serpiff.com/">
+<link rel="alternate" hreflang="en" href="https://serpiff.com/en/">
+<link rel="alternate" hreflang="x-default" href="https://serpiff.com/en/">
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="/en/"><picture><source media="(prefers-color-scheme: dark)" srcset="/wordmark-dark.svg"><img src="/wordmark-light.svg" alt="serpiff" width="140" height="32"></picture></a>
+    <div class="header-actions">
+    <!-- Icon: Octicons mark-github (MIT License, Copyright (c) GitHub Inc.) -->
+    <a class="star-link" href="https://github.com/serpiff/serpiff"><span class="star-count"><span class="star-emoji" aria-hidden="true">⭐️</span>12<span class="visually-hidden"> stars</span></span> <span class="star-btn"><svg aria-hidden="true" focusable="false" viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M6.766 11.328c-2.063-.25-3.516-1.734-3.516-3.656 0-.781.281-1.625.75-2.188-.203-.515-.172-1.609.063-2.062.625-.078 1.468.25 1.968.703.594-.187 1.219-.281 1.985-.281.765 0 1.39.094 1.953.265.484-.437 1.344-.765 1.969-.687.218.422.25 1.515.046 2.047.5.593.766 1.39.766 2.203 0 1.922-1.453 3.375-3.547 3.64.531.344.89 1.094.89 1.954v1.625c0 .468.391.734.86.547C13.781 14.359 16 11.53 16 8.03 16 3.61 12.406 0 7.984 0 3.563 0 0 3.61 0 8.031a7.88 7.88 0 0 0 5.172 7.422c.422.156.828-.125.828-.547v-1.25c-.219.094-.5.156-.75.156-1.031 0-1.64-.562-2.078-1.609-.172-.422-.36-.672-.719-.719-.187-.015-.25-.093-.25-.187 0-.188.313-.328.625-.328.453 0 .844.281 1.25.86.313.452.64.655 1.031.655s.641-.14 1-.5c.266-.265.47-.5.657-.656"/></svg><span class="star-long">Give us a star!</span><span class="star-short">Star</span></span></a>
+    <a class="lang-link" href="/" lang="ja" hreflang="ja">日本語</a>
+    </div>
+  </div>
+</header>
+<main class="wrap">
+<section class="hero">
+  <h1>Review your GitHub pull requests<br>locally and efficiently</h1>
+  <p>serpiff is a code review tool that runs locally. It offers more advanced and convenient features than the review screen in the browser you usually use.</p>
+  <p><a class="button" href="/en/#install"><svg class="icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M4 17v3h16v-3"/></svg>Install</a></p>
+</section>
+
+<section>
+  <h2>Features</h2>
+  <div class="carousel">
+    <ul class="features">
+      <li class="slide"><div class="slide-text"><strong>Viewed per declaration</strong>GitHub's Viewed works per file, but serpiff lets you check at a finer grain.</div>
+      <div class="mock m-viewed" aria-hidden="true">
+        <div class="m-file">parser.go</div>
+        <div class="m-decl d1"><div class="m-head"><span class="m-check"><svg viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 6.5l2.5 2.5 4.5-5.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>func Parse</span></div><div class="m-fold"><div class="m-fold-in"><div class="m-lines"><div class="m-line add"><span class="m-t">+ tok := lex(b)</span></div><div class="m-line add"><span class="m-t">+ return build(tok)</span></div></div></div></div></div>
+        <div class="m-decl d2"><div class="m-head"><span class="m-check"><svg viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 6.5l2.5 2.5 4.5-5.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>func Next</span></div><div class="m-fold"><div class="m-fold-in"><div class="m-lines"><div class="m-line add"><span class="m-t">+ p.pos++</span></div><div class="m-line add"><span class="m-t">+ return p.cur()</span></div></div></div></div></div>
+        <div class="m-decl d3"><div class="m-head"><span class="m-check"><svg viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 6.5l2.5 2.5 4.5-5.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>func String</span></div><div class="m-fold"><div class="m-fold-in"><div class="m-lines"><div class="m-line add"><span class="m-t">+ s := p.text()</span></div><div class="m-line add"><span class="m-t">+ return trim(s)</span></div></div></div></div></div>
+      </div></li>
+      <li class="slide"><div class="slide-text"><strong>Review while following the flow</strong>Check the definitions of the functions and other code a line calls, right where you are.</div>
+      <div class="mock m-calls" aria-hidden="true">
+        <div class="m-file">handler.go</div>
+        <div class="m-line"><span class="m-t">  func Handle(r Req) {</span></div>
+        <div class="m-line add target"><span class="m-t">+   t := <span class="m-tok t1">Parse<svg class="m-cursor c1" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M2 1l11 6.2-4.8 1.3L6.2 13z"/></svg></span>(r.Body)</span></div>
+        <div class="m-fold p1 is-open"><div class="m-fold-in"><div class="m-peek">
+          <div class="m-peek-title">parse.go</div>
+          <div class="m-line"><span class="m-t">func Parse(b []byte) Tree {</span></div>
+          <div class="m-line"><span class="m-t">    tok := <span class="m-tok t2">Lex<svg class="m-cursor c2" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M2 1l11 6.2-4.8 1.3L6.2 13z"/></svg></span>(b)</span></div>
+          <div class="m-line"><span class="m-t">    return build(tok)</span></div>
+          <div class="m-fold p2 is-open"><div class="m-fold-in"><div class="m-peek m-peek2">
+            <div class="m-peek-title">lex.go</div>
+            <div class="m-line"><span class="m-t">func Lex(b []byte) []Tok {</span></div>
+            <div class="m-line"><span class="m-t">    return scan(b)</span></div>
+          </div></div></div>
+        </div></div></div>
+        <div class="m-line add"><span class="m-t">+   return t</span></div>
+        <div class="m-line"><span class="m-t">  }</span></div>
+      </div></li>
+      <li class="slide"><div class="slide-text"><strong>Read Markdown as rendered</strong>Compare Markdown changes block by block as a rendered document instead of raw source, and comment right there.</div>
+      <div class="mock m-md" aria-hidden="true">
+        <div class="m-row"><div class="m-blk h">Usage</div><div></div></div>
+        <div class="m-row"><div class="m-blk">Start the tool and open the PR.</div><div></div></div>
+        <div class="m-row"><div class="m-blk r-del">No setup is needed.</div><div></div></div>
+        <div class="m-row"><div class="m-blk r-add">Write the destination in the config file.</div><div class="m-bubble">Add an example</div></div>
+        <div class="m-row"><div class="m-blk">• Check the steps</div><div></div></div>
+        <div class="m-row"><div class="m-blk r-item">• Share the result</div><div></div></div>
+      </div></li>
+      <li class="slide"><div class="slide-text"><strong>Always see only what is new</strong>When something you already checked changes again, serpiff shows only the diff since then.</div>
+      <div class="mock m-since" aria-hidden="true">
+        <div class="m-decl"><div class="m-head"><span class="m-check"><svg viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 6.5l2.5 2.5 4.5-5.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>func Parse</span><span class="m-badge">Since viewed</span></div>
+          <div class="m-lines">
+            <div class="m-line"><span class="m-t">    if len(b) == 0 {</span></div>
+            <div class="m-line"><span class="m-t">        return nil</span></div>
+            <div class="m-line"><span class="m-t">    }</span></div>
+            <div class="m-line l-del"><span class="m-t">-   n := count(b)</span></div>
+            <div class="m-line l-add"><span class="m-t">+   n := countAll(b)</span></div>
+          </div></div>
+        <div class="m-decl m-plain"><div class="m-head"><span class="m-check m-static"><svg viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 6.5l2.5 2.5 4.5-5.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>func String</span></div></div>
+      </div></li>
+      <li class="slide"><div class="slide-text"><strong>Compare Storybook</strong>See how a component's appearance changed right where you are.</div>
+      <div class="mock m-story" aria-hidden="true">
+        <div class="m-story-file"><span>Button.tsx</span><span class="m-toggle"><span class="m-tri">▶</span> Stories<svg class="m-cursor c3" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M2 1l11 6.2-4.8 1.3L6.2 13z"/></svg></span></div>
+        <div class="m-line del"><span class="m-t">-   radius: 4</span></div>
+        <div class="m-line add"><span class="m-t">+   radius: 14</span></div>
+        <div class="m-fold panel is-open"><div class="m-fold-in"><div class="m-panel">
+          <div class="m-pv pv-base"><div class="m-pv-label">base</div><div class="m-pv-box"><span class="m-btn">Save</span></div></div>
+          <div class="m-pv pv-head"><div class="m-pv-label">head</div><div class="m-pv-box"><span class="m-btn">Save</span></div></div>
+        </div></div></div>
+      </div></li>
+      <li class="slide"><div class="slide-text"><strong>Let Claude Code review</strong>Have AI review the diff and adopt its suggestions as comments.</div>
+      <div class="mock m-ai" aria-hidden="true">
+        <div class="m-line"><span class="m-t">  n := count(b)</span></div>
+        <div class="m-fold s1"><div class="m-fold-in"><div class="m-card"><span>Division by zero?</span><span class="m-btns"><span class="m-btn-s acc acc1">Accept</span><span class="m-btn-s">Deny</span></span></div></div></div>
+        <div class="m-line"><span class="m-t">  return b[n]</span></div>
+        <div class="m-fold s2"><div class="m-fold-in"><div class="m-card"><span>Check the range</span><span class="m-btns"><span class="m-btn-s acc">Accept</span><span class="m-btn-s den2">Deny</span></span></div></div></div>
+        <div class="m-draft"><div class="m-draft-title">Pending review</div>
+          <div class="m-fold draft-fold is-open"><div class="m-fold-in"><div class="m-draft-item">Division by zero?</div></div></div>
+        </div>
+      </div></li>
+    </ul>
+    <div class="dots" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+  </div>
+</section>
+
+<section id="pricing">
+  <h2>Pricing</h2>
+  <div class="plans">
+    <div class="plan">
+      <h3>Basic</h3>
+      <p class="price">¥0</p>
+      <p>Pull requests in public repositories are unlimited. For pull requests in private repositories and local branches, you can create up to 5 new sessions per month. You can open sessions you have already created at any time.</p>
+    </div>
+    <div class="plan">
+      <h3>Paid license</h3>
+      <p class="price">¥500 per month<span> / ¥3,000 per year</span></p>
+      <p>Tax included, and it renews automatically until you cancel. Use private repositories and local branches without limits.</p>
+      <p><a class="button" href="https://buy.polar.sh/polar_cl_7WOUiRilo4Mg3V74fsAiJkiuvKgNQFux6xBin1SIuZe?locale=ja"><svg class="icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M2 3h3l2.6 12.2a1 1 0 0 0 1 .8h9.8a1 1 0 0 0 1-.8L21 7H6"/><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/></svg>Buy</a></p>
+    </div>
+  </div>
+  <ul>
+    <li>One paid license is for one person, and you can register up to 3 computers.</li>
+    <li>On the free plan, you will occasionally see a purchase prompt when you create a new session in a private repository, for example.</li>
+  </ul>
+  <p class="note">For addresses outside Japan, tax may be added at checkout. Polar handles the purchase and the payment. For cancellation, refunds, and other terms, see the <a href="/legal/eula">License Agreement (Japanese)</a>. The <a href="/legal/tokushoho">Legal Notice (Japanese)</a> is also available.</p>
+</section>
+
+<section>
+  <h2>System requirements</h2>
+  <h3>Required</h3>
+  <ul>
+    <li>A Mac with Apple silicon (macOS 27.0 or later).</li>
+    <li><code>git</code> and <code>gh</code> are installed and on your PATH.</li>
+  </ul>
+  <h3>Recommended</h3>
+  <ul>
+    <li>The language servers for the programming languages you use are installed and on your PATH.</li>
+    <li><code>claude</code> is installed and on your PATH.</li>
+  </ul>
+</section>
+
+<section id="install">
+  <h2>Install</h2>
+  <div class="tabs" role="radiogroup" aria-label="Install method">
+    <input type="radio" name="install" id="tab-oneliner" checked>
+    <label for="tab-oneliner">CLI</label>
+    <input type="radio" name="install" id="tab-manual">
+    <label for="tab-manual">Manual</label>
+
+    <div class="tab-panel" id="panel-oneliner">
+      <p>Run the following command in a terminal.</p>
+      <pre><code>gh release download -R serpiff/serpiff -p install.sh -O - | sh</code></pre>
+    </div>
+
+    <div class="tab-panel" id="panel-manual">
+      <p>Open the downloaded .dmg and drag <code>serpiff.app</code> to <code>Applications</code>.</p>
+      <p><a class="button" href="https://github.com/serpiff/serpiff/releases/latest/download/serpiff_aarch64.dmg"><svg class="icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M4 17v3h16v-3"/></svg>Download the dmg</a></p>
+      <p>serpiff is not notarized by Apple, so the first launch fails. Follow the steps below. The steps and wording may differ depending on your macOS version.</p>
+      <ol>
+        <li>Close the warning that appears when the launch fails.</li>
+        <li>Open System Settings → Privacy &amp; Security and click Open Anyway next to the message saying “serpiff” was blocked to protect your Mac. This button appears for only about an hour after you try to open the app. If you don't see it, try opening the app again.</li>
+        <li>In the confirmation dialog, click Open Anyway again and enter your administrator password.</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section id="languages">
+  <h2>Supported languages</h2>
+  <table class="langs">
+    <thead>
+      <tr><th>Language</th><th>Language server</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>C / C++</td><td><code>clangd</code></td></tr>
+      <tr><td>C#</td><td><code>roslyn-language-server</code></td></tr>
+      <tr><td>Go</td><td><code>gopls</code></td></tr>
+      <tr><td>Java</td><td><code>jdtls</code></td></tr>
+      <tr><td>JavaScript</td><td><code>tsc</code> (TypeScript 7)</td></tr>
+      <tr><td>Kotlin</td><td><code>kotlin-lsp</code></td></tr>
+      <tr><td>Perl 5</td><td><code>perl-lsp</code></td></tr>
+      <tr><td>Python 3</td><td><code>ty</code></td></tr>
+      <tr><td>Rust</td><td><code>rust-analyzer</code></td></tr>
+      <tr><td>Swift</td><td><code>sourcekit-lsp</code></td></tr>
+      <tr><td>TypeScript</td><td><code>tsc</code> (TypeScript 7)</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<script src="/carousel.js" defer></script>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <ul>
+      <li><a href="/legal/eula">License Agreement (Japanese)</a></li>
+      <li><a href="/legal/privacy">Privacy Policy (Japanese)</a></li>
+      <li><a href="/legal/tokushoho">Legal Notice (Japanese)</a></li>
+      <li><a href="mailto:support@serpiff.com">support@serpiff.com</a></li>
+    </ul>
+  </div>
+</footer>
+</body>
+</html>

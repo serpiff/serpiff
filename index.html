@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>serpiff - Pull Requestを宣言ごとにレビューする</title>
+<meta name="description" content="GitHubのPull Requestをローカルで効率的にレビューするためのツール。関数や型などの宣言ごとに読み進められます。">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/icon.png">
+<link rel="stylesheet" href="/style.css">
+<link rel="canonical" href="https://serpiff.com/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="serpiff">
+<meta property="og:title" content="serpiff - Pull Requestを宣言ごとにレビューする">
+<meta property="og:description" content="GitHubのPull Requestをローカルで効率的にレビューするためのツール。関数や型などの宣言ごとに読み進められます。">
+<meta property="og:url" content="https://serpiff.com/">
+<meta property="og:image" content="https://serpiff.com/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="serpiff">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:locale:alternate" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="alternate" hreflang="ja" href="https://serpiff.com/">
+<link rel="alternate" hreflang="en" href="https://serpiff.com/en/">
+<link rel="alternate" hreflang="x-default" href="https://serpiff.com/en/">
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="/"><picture><source media="(prefers-color-scheme: dark)" srcset="/wordmark-dark.svg"><img src="/wordmark-light.svg" alt="serpiff" width="140" height="32"></picture></a>
+    <div class="header-actions">
+    <!-- Icon: Octicons mark-github (MIT License, Copyright (c) GitHub Inc.) -->
+    <a class="star-link" href="https://github.com/serpiff/serpiff"><span class="star-count"><span class="star-emoji" aria-hidden="true">⭐️</span>12<span class="visually-hidden"> stars</span></span> <span class="star-btn"><svg aria-hidden="true" focusable="false" viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M6.766 11.328c-2.063-.25-3.516-1.734-3.516-3.656 0-.781.281-1.625.75-2.188-.203-.515-.172-1.609.063-2.062.625-.078 1.468.25 1.968.703.594-.187 1.219-.281 1.985-.281.765 0 1.39.094 1.953.265.484-.437 1.344-.765 1.969-.687.218.422.25 1.515.046 2.047.5.593.766 1.39.766 2.203 0 1.922-1.453 3.375-3.547 3.64.531.344.89 1.094.89 1.954v1.625c0 .468.391.734.86.547C13.781 14.359 16 11.53 16 8.03 16 3.61 12.406 0 7.984 0 3.563 0 0 3.61 0 8.031a7.88 7.88 0 0 0 5.172 7.422c.422.156.828-.125.828-.547v-1.25c-.219.094-.5.156-.75.156-1.031 0-1.64-.562-2.078-1.609-.172-.422-.36-.672-.719-.719-.187-.015-.25-.093-.25-.187 0-.188.313-.328.625-.328.453 0 .844.281 1.25.86.313.452.64.655 1.031.655s.641-.14 1-.5c.266-.265.47-.5.657-.656"/></svg><span class="star-long">Give us a star!</span><span class="star-short">Star</span></span></a>
+    <a class="lang-link" href="/en/" lang="en" hreflang="en">English</a>
+    </div>
+  </div>
+</header>
+<main class="wrap">
+<section class="hero">
+  <h1>そのGitHubのPull Request<br>ローカルで効率的にレビューしましょう</h1>
+  <p>serpiffはローカルで実行するコードレビューツールです。普段利用されているブラウザ上のレビュー画面よりも、さらに高度で便利な機能を提供します。</p>
+  <p><a class="button" href="/#install"><svg class="icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M4 17v3h16v-3"/></svg>インストール</a></p>
+</section>
+
+<section>
+  <h2>機能紹介</h2>
+  <div class="carousel">
+    <ul class="features">
+      <li class="slide"><div class="slide-text"><strong>宣言ごとのViewed</strong>GitHubのViewedはファイル単位ですが、serpiffはより細かい粒度でチェックできます。</div>
+      <div class="mock m-viewed" aria-hidden="true">
+        <div class="m-file">parser.go</div>
+        <div class="m-decl d1"><div class="m-head"><span class="m-check"><svg viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 6.5l2.5 2.5 4.5-5.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>func Parse</span></div><div class="m-fold"><div class="m-fold-in"><div class="m-lines"><div class="m-line add"><span class="m-t">+ tok := lex(b)</span></div><div class="m-line add"><span class="m-t">+ return build(tok)</span></div></div></div></div></div>
+        <div class="m-decl d2"><div class="m-head"><span class="m-check"><svg viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 6.5l2.5 2.5 4.5-5.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>func Next</span></div><div class="m-fold"><div class="m-fold-in"><div class="m-lines"><div class="m-line add"><span class="m-t">+ p.pos++</span></div><div class="m-line add"><span class="m-t">+ return p.cur()</span></div></div></div></div></div>
+        <div class="m-decl d3"><div class="m-head"><span class="m-check"><svg viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 6.5l2.5 2.5 4.5-5.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>func String</span></div><div class="m-fold"><div class="m-fold-in"><div class="m-lines"><div class="m-line add"><span class="m-t">+ s := p.text()</span></div><div class="m-line add"><span class="m-t">+ return trim(s)</span></div></div></div></div></div>
+      </div></li>
+      <li class="slide"><div class="slide-text"><strong>処理の流れを追いながらのレビュー</strong>呼び出している関数などの定義をその場で確認できます。</div>
+      <div class="mock m-calls" aria-hidden="true">
+        <div class="m-file">handler.go</div>
+        <div class="m-line"><span class="m-t">  func Handle(r Req) {</span></div>
+        <div class="m-line add target"><span class="m-t">+   t := <span class="m-tok t1">Parse<svg class="m-cursor c1" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M2 1l11 6.2-4.8 1.3L6.2 13z"/></svg></span>(r.Body)</span></div>
+        <div class="m-fold p1 is-open"><div class="m-fold-in"><div class="m-peek">
+          <div class="m-peek-title">parse.go</div>
+          <div class="m-line"><span class="m-t">func Parse(b []byte) Tree {</span></div>
+          <div class="m-line"><span class="m-t">    tok := <span class="m-tok t2">Lex<svg class="m-cursor c2" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M2 1l11 6.2-4.8 1.3L6.2 13z"/></svg></span>(b)</span></div>
+          <div class="m-line"><span class="m-t">    return build(tok)</span></div>
+          <div class="m-fold p2 is-open"><div class="m-fold-in"><div class="m-peek m-peek2">
+            <div class="m-peek-title">lex.go</div>
+            <div class="m-line"><span class="m-t">func Lex(b []byte) []Tok {</span></div>
+            <div class="m-line"><span class="m-t">    return scan(b)</span></div>
+          </div></div></div>
+        </div></div></div>
+        <div class="m-line add"><span class="m-t">+   return t</span></div>
+        <div class="m-line"><span class="m-t">  }</span></div>
+      </div></li>
+      <li class="slide"><div class="slide-text"><strong>Markdownを描画したまま読む</strong>Markdownの差分を生のソースではなく描画した文書としてブロックごとに比べ、その場でコメントできます。</div>
+      <div class="mock m-md" aria-hidden="true">
+        <div class="m-row"><div class="m-blk h">使い方</div><div></div></div>
+        <div class="m-row"><div class="m-blk">ツールを起動してPRを開きます。</div><div></div></div>
+        <div class="m-row"><div class="m-blk r-del">設定は不要です。</div><div></div></div>
+        <div class="m-row"><div class="m-blk r-add">設定ファイルに保存先を書きます。</div><div class="m-bubble">例を足して</div></div>
+        <div class="m-row"><div class="m-blk">・手順を確かめる</div><div></div></div>
+        <div class="m-row"><div class="m-blk r-item">・結果を共有する</div><div></div></div>
+      </div></li>
+      <li class="slide"><div class="slide-text"><strong>常に新しい差分だけを表示</strong>確認済みの内容に新規の変更が入ると、そこからの差分だけを表示します。</div>
+      <div class="mock m-since" aria-hidden="true">
+        <div class="m-decl"><div class="m-head"><span class="m-check"><svg viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 6.5l2.5 2.5 4.5-5.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>func Parse</span><span class="m-badge">前回から</span></div>
+          <div class="m-lines">
+            <div class="m-line"><span class="m-t">    if len(b) == 0 {</span></div>
+            <div class="m-line"><span class="m-t">        return nil</span></div>
+            <div class="m-line"><span class="m-t">    }</span></div>
+            <div class="m-line l-del"><span class="m-t">-   n := count(b)</span></div>
+            <div class="m-line l-add"><span class="m-t">+   n := countAll(b)</span></div>
+          </div></div>
+        <div class="m-decl m-plain"><div class="m-head"><span class="m-check m-static"><svg viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 6.5l2.5 2.5 4.5-5.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>func String</span></div></div>
+      </div></li>
+      <li class="slide"><div class="slide-text"><strong>Storybookを比較</strong>コンポーネントの見た目の変化をその場で確認できます。</div>
+      <div class="mock m-story" aria-hidden="true">
+        <div class="m-story-file"><span>Button.tsx</span><span class="m-toggle"><span class="m-tri">▶</span> Stories<svg class="m-cursor c3" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M2 1l11 6.2-4.8 1.3L6.2 13z"/></svg></span></div>
+        <div class="m-line del"><span class="m-t">-   radius: 4</span></div>
+        <div class="m-line add"><span class="m-t">+   radius: 14</span></div>
+        <div class="m-fold panel is-open"><div class="m-fold-in"><div class="m-panel">
+          <div class="m-pv pv-base"><div class="m-pv-label">base</div><div class="m-pv-box"><span class="m-btn">Save</span></div></div>
+          <div class="m-pv pv-head"><div class="m-pv-label">head</div><div class="m-pv-box"><span class="m-btn">Save</span></div></div>
+        </div></div></div>
+      </div></li>
+      <li class="slide"><div class="slide-text"><strong>Claude Codeにレビューを任せる</strong>AIに差分をレビューさせ、コメントとして採用できます。</div>
+      <div class="mock m-ai" aria-hidden="true">
+        <div class="m-line"><span class="m-t">  n := count(b)</span></div>
+        <div class="m-fold s1"><div class="m-fold-in"><div class="m-card"><span>ゼロ割りの恐れ</span><span class="m-btns"><span class="m-btn-s acc acc1">Accept</span><span class="m-btn-s">Deny</span></span></div></div></div>
+        <div class="m-line"><span class="m-t">  return b[n]</span></div>
+        <div class="m-fold s2"><div class="m-fold-in"><div class="m-card"><span>範囲を確かめて</span><span class="m-btns"><span class="m-btn-s acc">Accept</span><span class="m-btn-s den2">Deny</span></span></div></div></div>
+        <div class="m-draft"><div class="m-draft-title">下書きのレビュー</div>
+          <div class="m-fold draft-fold is-open"><div class="m-fold-in"><div class="m-draft-item">ゼロ割りの恐れ</div></div></div>
+        </div>
+      </div></li>
+    </ul>
+    <div class="dots" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+  </div>
+</section>
+
+<section id="pricing">
+  <h2>料金</h2>
+  <div class="plans">
+    <div class="plan">
+      <h3>基本使用</h3>
+      <p class="price">0円</p>
+      <p>公開のリポジトリのPull Requestは制限なし。非公開のリポジトリのPull Requestとローカルのブランチは新しいセッションの作成が1か月に5回までです。作成済みのセッションはいつでも開けます。</p>
+    </div>
+    <div class="plan">
+      <h3>有料ライセンス</h3>
+      <p class="price">月額500円<span> / 年額3,000円</span></p>
+      <p>税込みで、解約するまで自動で更新されます。非公開のリポジトリとローカルのブランチも、制限なく使えます。</p>
+      <p><a class="button" href="https://buy.polar.sh/polar_cl_7WOUiRilo4Mg3V74fsAiJkiuvKgNQFux6xBin1SIuZe?locale=ja"><svg class="icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M2 3h3l2.6 12.2a1 1 0 0 0 1 .8h9.8a1 1 0 0 0 1-.8L21 7H6"/><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/></svg>購入する</a></p>
+    </div>
+  </div>
+  <ul>
+    <li>1つの有料ライセンスを使用できるのは1人で、コンピューター3台まで登録できます。</li>
+    <li>無料版では非公開のリポジトリなどで新しいセッションを作るときに、ときどき購入の案内が出ます。</li>
+  </ul>
+  <p class="note">日本以外の住所では決済画面で税が別に加算されることがあります。購入の手続きと決済はPolarが行います。解約・返金などの条件は<a href="/legal/eula">使用許諾契約書</a>をご覧ください。特定商取引法に基づく表記は<a href="/legal/tokushoho">こちら</a>をご覧ください。</p>
+</section>
+
+<section>
+  <h2>動作環境</h2>
+  <h3>必須要件</h3>
+  <ul>
+    <li>Appleシリコンを搭載したMac（macOS 27.0以降）であること。</li>
+    <li><code>git</code>と<code>gh</code>がインストールされPATHが通っていること。</li>
+  </ul>
+  <h3>推奨要件</h3>
+  <ul>
+    <li>利用するプログラミング言語の言語サーバーがインストールされPATHが通っていること。</li>
+    <li><code>claude</code>がインストールされPATHが通っていること。</li>
+  </ul>
+</section>
+
+<section id="install">
+  <h2>インストール</h2>
+  <div class="tabs" role="radiogroup" aria-label="インストールの方法">
+    <input type="radio" name="install" id="tab-oneliner" checked>
+    <label for="tab-oneliner">CLI</label>
+    <input type="radio" name="install" id="tab-manual">
+    <label for="tab-manual">手動</label>
+
+    <div class="tab-panel" id="panel-oneliner">
+      <p>ターミナルで次のコマンドを実行します。</p>
+      <pre><code>gh release download -R serpiff/serpiff -p install.sh -O - | sh</code></pre>
+    </div>
+
+    <div class="tab-panel" id="panel-manual">
+      <p>ダウンロードした.dmgを開き、<code>serpiff.app</code>を<code>Applications</code>にドラッグします。</p>
+      <p><a class="button" href="https://github.com/serpiff/serpiff/releases/latest/download/serpiff_aarch64.dmg"><svg class="icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M4 17v3h16v-3"/></svg>dmgをダウンロード</a></p>
+      <p>serpiffはAppleの公証を受けていないため、初回は起動に失敗するので、以下の手順に従ってください。（手順や文言はmacOSのバージョンにより異なる可能性があります。）</p>
+      <ol>
+        <li>起動に失敗して警告が出るので閉じる。</li>
+        <li>「システム設定」→「プライバシーとセキュリティ」を開き、「"serpiff"はMacを保護するためにブロックされました」の「このまま開く」をクリック。（このボタンは起動を試してから約1時間しか出ないため、出ていなければ再度起動した後にお試しください。）</li>
+        <li>確認のダイアログでもう一度「このまま開く」をクリックし、管理者のパスワードを入力。</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section id="languages">
+  <h2>対応言語</h2>
+  <table class="langs">
+    <thead>
+      <tr><th>言語</th><th>言語サーバー</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>C / C++</td><td><code>clangd</code></td></tr>
+      <tr><td>C#</td><td><code>roslyn-language-server</code></td></tr>
+      <tr><td>Go</td><td><code>gopls</code></td></tr>
+      <tr><td>Java</td><td><code>jdtls</code></td></tr>
+      <tr><td>JavaScript</td><td><code>tsc</code>（TypeScript 7）</td></tr>
+      <tr><td>Kotlin</td><td><code>kotlin-lsp</code></td></tr>
+      <tr><td>Perl 5</td><td><code>perl-lsp</code></td></tr>
+      <tr><td>Python 3</td><td><code>ty</code></td></tr>
+      <tr><td>Rust</td><td><code>rust-analyzer</code></td></tr>
+      <tr><td>Swift</td><td><code>sourcekit-lsp</code></td></tr>
+      <tr><td>TypeScript</td><td><code>tsc</code>（TypeScript 7）</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<script src="/carousel.js" defer></script>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <ul>
+      <li><a href="/legal/eula">使用許諾契約書</a></li>
+      <li><a href="/legal/privacy">プライバシーポリシー</a></li>
+      <li><a href="/legal/tokushoho">特定商取引法に基づく表記</a></li>
+      <li><a href="mailto:support@serpiff.com">support@serpiff.com</a></li>
+    </ul>
+  </div>
+</footer>
+</body>
+</html>
