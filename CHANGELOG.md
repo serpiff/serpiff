@@ -4,6 +4,19 @@ User-facing changes to serpiff, listed by version. The format follows [Keep a Ch
 
 English | [日本語](https://github.com/serpiff/serpiff/blob/main/CHANGELOG-ja.md)
 
+## [0.3.9] - 2026-11-09
+
+### Added
+
+- The Reviewers section of the sidebar is now Details, with Assignees, Labels and Milestone sections below Reviewers. You can see and add, remove or change the PR's assignees, labels and milestone from serpiff
+- Details now has a Projects section. It shows the Projects the PR is in with their Status, and lets you add the PR to a project, remove it, and change its Status. When the token lacks the `project` scope, it shows the command to add it
+
+### Fixed
+
+- On a big diff, opening, closing and typing in the Conversation and CheckRun pop-outs was slow
+- After closing a dialog or the Conversation pop-out opened with the mouse, focus did not return to the button that was clicked
+- In Details and Reviewers, making changes in quick succession could leave a removed label or similar on screen until the next refresh (60 seconds)
+
 ## [0.3.8] - 2026-11-06
 
 ### Fixed
