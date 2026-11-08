@@ -4,6 +4,19 @@ serpiffの利用者向けの変更点を、版ごとにまとめています。�
 
 [English](https://github.com/serpiff/serpiff/blob/main/CHANGELOG.md) | 日本語
 
+## [0.3.9] - 2026-11-09
+
+### 追加
+
+- サイドバーのReviewersの区画をDetailsにして、Reviewersの下にAssignees・Labels・Milestoneの節を足しました。PRの担当者・ラベル・マイルストーンをserpiffから見て、追加・削除・変更できます
+- DetailsにProjectsの節を足しました。PRが入っているProjectsの名前とStatusを見て、Projectへの追加・削除とStatusの変更ができます。トークンに`project`のスコープが無いときは、足すためのコマンドを出します
+
+### 修正
+
+- 大きな差分で、Conversation・CheckRunのポップアウトを開く・閉じる・入力するのが遅かったのを直しました
+- マウスで開いたダイアログやConversationのポップアウトを閉じたとき、フォーカスが押したボタンに戻らなかったのを直しました
+- DetailsとReviewersで変更を続けて行うと、外したはずのラベルなどが次の取り直し（60秒）まで残ることがあったのを直しました
+
 ## [0.3.8] - 2026-11-06
 
 ### 修正
