@@ -16,19 +16,23 @@ GitHubはページを読み込み直さずに移動します。拡張はその�
 
 ## 必要なもの
 
-- serpiff 0.1.4以降。`serpiff://`のURLスキームを登録する、アプリのserpiff（`.app`）が必要です。serpiffが起動していなければmacOSが起動します。`serpiffd serve`と`app:dev`のビルドはこのスキームを受け取りません。
+- serpiff 0.3.9以降。この拡張を内蔵し、`serpiff://`のURLスキームを登録する、アプリのserpiff（`.app`）が必要です。serpiffが起動していなければmacOSが起動します。`serpiffd serve`と`app:dev`のビルドはこのスキームを受け取りません。
 - Pull Requestのリポジトリが、あらかじめserpiffに登録されていること。
 
 ## インストール
 
-1. このフォルダーを手元に置きます。serpiff/serpiffの`main`ブランチの`chrome/`として公開されています（例: `git clone --depth 1 https://github.com/serpiff/serpiff`）。
+この拡張はChromeウェブストアでは配布していません。serpiffのアプリが拡張を内蔵していて、起動のたびに`~/.local/share/serpiff/chrome-extension/`へ書き出します。[serpiff.com](https://serpiff.com/#chrome)にも同じ手順があります。
+
+1. serpiffを一度起動します。
 2. `chrome://extensions`を開き、デベロッパーモードをオンにします。
-3. 「パッケージ化されていない拡張機能を読み込む」を選び、`chrome/`を選びます（ビルドは要りません）。
-4. GitHubのPull Requestを開き、ツールバーのserpiffのボタンを押します（パズルのピースのメニューからピン留めできます）。
+3. serpiffのメニューの「ヘルプ」→「Chrome拡張をFinderで表示」を選び、Chromeで「パッケージ化されていない拡張機能を読み込む」を選んでそのフォルダーを指定します。フォルダーは隠しフォルダーの`.local`の中にあるので、Finderからダイアログにドラッグするか、パスを⌘⇧Gで貼ってください。
+4. GitHubのPull Requestを開き、ツールバーのserpiffのボタンをクリックします（パズルのピースのメニューからピン留めできます）。
 
 拡張をインストールしたり読み込み直したりしたら、すでに開いているGitHubのタブを再読み込みしてください。
 
-読み込んだフォルダーはそのまま置いておきます（Chromeはそこから読みます）。更新するにはクローンで`git pull`を実行してから、`chrome://extensions`で拡張を再読み込みします。
+更新するには、serpiffを更新し（起動のときにフォルダーを書き直します）、`chrome://extensions`でserpiffの再読み込みボタン（↻）をクリックします。フォルダーは動かさないでください（Chromeはそこから読みます）。
+
+Chromeウェブストアの版を入れていた場合は、この版を読み込む前に削除してください。IDが違うので、両方あるとボタンが2つ出ます。
 
 ページ上のボタンはgithub.comから`serpiff://`を開くので、Chromeはサイトごとにserpiffを開くかを尋ねます。「常に許可」を選べます。ツールバーのボタンは拡張から開くので、Chromeの尋ね方が違う場合があります（毎回尋ねられるかもしれません）。尋ねられたら許可してください。
 

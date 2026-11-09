@@ -24,22 +24,29 @@ GitHub moves between pages without reloading; the extension follows those moves.
 
 ## Requirements
 
-- serpiff 0.1.4 or later: the bundled serpiff app (the `.app`), which registers the `serpiff://` URL scheme.
+- serpiff 0.3.9 or later: the bundled serpiff app (the `.app`), which carries this extension and registers the `serpiff://` URL scheme.
   If serpiff is not running, macOS starts it. `serpiffd serve` and the `app:dev` build do not receive the scheme.
 - The pull request's repository must already be registered in serpiff.
 
 ## Install
 
-1. Get this folder: it is published as `chrome/` on the `main` branch of
-   [serpiff/serpiff](https://github.com/serpiff/serpiff) (for example, `git clone --depth 1 https://github.com/serpiff/serpiff`).
+The extension is not on the Chrome Web Store. The serpiff app bundles it and writes it to
+`~/.local/share/serpiff/chrome-extension/` on every launch. See <https://serpiff.com/en/#chrome> as well.
+
+1. Launch serpiff once.
 2. Open `chrome://extensions` and turn on Developer mode.
-3. Choose "Load unpacked" and select `chrome/` (no build step).
+3. In serpiff, choose Help > "Show Chrome Extension in Finder", then click "Load unpacked" in Chrome and select that
+   folder. The folder is inside the hidden `.local` folder, so drag it from Finder into the dialog, or paste its path
+   with ⌘⇧G.
 4. Open a GitHub pull request and click the serpiff button in the toolbar (pin it from the puzzle-piece menu).
 
 After installing or reloading the extension, reload any GitHub tabs that are already open.
 
-Keep the loaded folder in place (Chrome reads it from there). To update, run `git pull` in your clone and then reload
-the extension in `chrome://extensions`.
+To update, update serpiff (it rewrites the folder on launch), then click the reload button (↻) on serpiff's card in
+`chrome://extensions`. Do not move the folder; Chrome reads it from there.
+
+If you installed the Chrome Web Store version, remove it before loading this one. The IDs differ, so having both shows
+the button twice.
 
 The page button opens `serpiff://` from github.com, so Chrome asks per site whether to open serpiff, and you can
 choose "Always allow". The toolbar button opens it from the extension instead, so Chrome may ask in a different way
