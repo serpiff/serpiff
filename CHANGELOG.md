@@ -4,6 +4,19 @@ User-facing changes to serpiff, listed by version. The format follows [Keep a Ch
 
 English | [日本語](https://github.com/serpiff/serpiff/blob/main/CHANGELOG-ja.md)
 
+## [0.3.10] - 2026-11-09
+
+### Added
+
+- Details now has Development, Notifications, Participants and Lock conversation sections. You can see the issues linked to the PR, subscribe to or unsubscribe from its notifications, see its participants, and lock or unlock the conversation. When the token lacks the `notifications` scope, it shows the command to add it
+- In Details, the Add labels dialog can now create a label the repository does not have yet and add it to the PR
+- The app's View menu now has Actual Size (⌘0), Zoom In (⌘+) and Zoom Out (⌘-). The zoom goes from 75% to 200% in steps and is kept for the next launch
+- The Chrome extension now ships inside the app. The app writes the extension to a folder on every launch, and Help > Show Chrome Extension in Finder or the puzzle-piece button on the left rail shows that folder and the steps to load it in Chrome
+
+### Fixed
+
+- In a narrow window, moving to a file with many long wrapped lines could crash the page with an error
+
 ## [0.3.9] - 2026-11-09
 
 ### Added
