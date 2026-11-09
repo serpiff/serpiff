@@ -136,7 +136,7 @@ When asked whether to add the marketplace, answer `y`, then choose a scope. For 
 
 ## Chrome extension
 
-On a GitHub pull request page, you can open that pull request in serpiff from the toolbar button or from the serpiff logo button in the header (on pull request lists, the logo button at the right end of each row). It needs serpiff 0.3.9 or later. The serpiff app writes the extension to a folder on every launch; choose Help > "Show Chrome Extension in Finder" in serpiff, turn on Developer mode in `chrome://extensions` and load that folder with "Load unpacked". The steps are on [serpiff.com](https://serpiff.com/en/#chrome), and the source is published as `chrome/` in this repository. For more, see [`chrome/README.md`](https://github.com/serpiff/serpiff/blob/main/chrome/README.md).
+On a GitHub pull request page, you can open that pull request in serpiff from the toolbar button or from the serpiff logo button in the header (on pull request lists, the logo button at the right end of each row). It needs serpiff 0.3.10 or later. The serpiff app writes the extension to a folder on every launch; choose Help > "Show Chrome Extension in Finder" in serpiff, turn on Developer mode in `chrome://extensions` and load that folder with "Load unpacked". The steps are on [serpiff.com](https://serpiff.com/en/#chrome), and the source is published as `chrome/` in this repository. For more, see [`chrome/README.md`](https://github.com/serpiff/serpiff/blob/main/chrome/README.md).
 
 ## Contact
 
