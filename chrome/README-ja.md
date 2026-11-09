@@ -16,7 +16,7 @@ GitHubはページを読み込み直さずに移動します。拡張はその�
 
 ## 必要なもの
 
-- serpiff 0.3.9以降。この拡張を内蔵し、`serpiff://`のURLスキームを登録する、アプリのserpiff（`.app`）が必要です。serpiffが起動していなければmacOSが起動します。`serpiffd serve`と`app:dev`のビルドはこのスキームを受け取りません。
+- serpiff 0.3.10以降。この拡張を内蔵し、`serpiff://`のURLスキームを登録する、アプリのserpiff（`.app`）が必要です。serpiffが起動していなければmacOSが起動します。`serpiffd serve`と`app:dev`のビルドはこのスキームを受け取りません。
 - Pull Requestのリポジトリが、あらかじめserpiffに登録されていること。
 
 ## インストール

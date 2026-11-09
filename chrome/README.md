@@ -24,7 +24,7 @@ GitHub moves between pages without reloading; the extension follows those moves.
 
 ## Requirements
 
-- serpiff 0.3.9 or later: the bundled serpiff app (the `.app`), which carries this extension and registers the `serpiff://` URL scheme.
+- serpiff 0.3.10 or later: the bundled serpiff app (the `.app`), which carries this extension and registers the `serpiff://` URL scheme.
   If serpiff is not running, macOS starts it. `serpiffd serve` and the `app:dev` build do not receive the scheme.
 - The pull request's repository must already be registered in serpiff.
 
