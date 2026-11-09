@@ -136,7 +136,7 @@ marketplaceを追加するか聞かれたら`y`と答え、入れる範囲を選
 
 ## Chrome拡張
 
-GitHubのPull Requestのページで、ツールバーのボタンかヘッダーのserpiffのロゴのボタン（Pull Requestの一覧では各行の右端のロゴのボタン）から、そのPull Requestをserpiffで開けます。serpiff 0.3.9以降が必要です。serpiffのアプリは起動のたびに拡張をフォルダーに書き出します。serpiffのメニューの「ヘルプ」→「Chrome拡張をFinderで表示」でそのフォルダーを出し、`chrome://extensions`でデベロッパーモードをオンにして「パッケージ化されていない拡張機能を読み込む」で読み込みます。手順は[serpiff.com](https://serpiff.com/#chrome)にあり、ソースはこのリポジトリの`chrome/`として公開しています。詳しくは[`chrome/README-ja.md`](https://github.com/serpiff/serpiff/blob/main/chrome/README-ja.md)をご覧ください。
+GitHubのPull Requestのページで、ツールバーのボタンかヘッダーのserpiffのロゴのボタン（Pull Requestの一覧では各行の右端のロゴのボタン）から、そのPull Requestをserpiffで開けます。serpiff 0.3.10以降が必要です。serpiffのアプリは起動のたびに拡張をフォルダーに書き出します。serpiffのメニューの「ヘルプ」→「Chrome拡張をFinderで表示」でそのフォルダーを出し、`chrome://extensions`でデベロッパーモードをオンにして「パッケージ化されていない拡張機能を読み込む」で読み込みます。手順は[serpiff.com](https://serpiff.com/#chrome)にあり、ソースはこのリポジトリの`chrome/`として公開しています。詳しくは[`chrome/README-ja.md`](https://github.com/serpiff/serpiff/blob/main/chrome/README-ja.md)をご覧ください。
 
 ## 問い合わせ
 
