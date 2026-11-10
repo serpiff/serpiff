@@ -4,6 +4,15 @@ User-facing changes to serpiff, listed by version. The format follows [Keep a Ch
 
 English | [日本語](https://github.com/serpiff/serpiff/blob/main/CHANGELOG-ja.md)
 
+## [0.3.11] - 2026-11-11
+
+### Fixed
+
+- Zooming in or out became slow after every file of a PR with many files had loaded
+- When zoomed in, a gap could open between a pinned file header and the header bar, letting diff lines show through
+- When zoomed in, the running indicator for Checks on the left rail could spin off-center
+- In a Japanese environment, hover and Calls in C# files could take a long time to become available. C# hover text is now shown in English
+
 ## [0.3.10] - 2026-11-09
 
 ### Added
