@@ -4,6 +4,16 @@ User-facing changes to serpiff, listed by version. The format follows [Keep a Ch
 
 English | [日本語](https://github.com/serpiff/serpiff/blob/main/CHANGELOG-ja.md)
 
+## [0.3.12] - 2026-11-11
+
+### Added
+
+- serpiff now tells you when an installed language server has a newer version, and can update it after you approve. The Setup list shows the new version with Update…, and Check for updates checks right away. When the diff has files in that language, the ⚠ in the footer shows a notice too (Later hides it until the next launch). The automatic check runs once a day and can be turned off with Check for language server updates in the settings
+
+### Changed
+
+- The privacy policy is now version 3. It adds checking language server versions and contacting their distributors when installing or updating them. On the next launch, serpiff asks you to agree to version 3
+
 ## [0.3.11] - 2026-11-11
 
 ### Fixed
