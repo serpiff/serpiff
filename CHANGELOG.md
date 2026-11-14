@@ -4,6 +4,26 @@ User-facing changes to serpiff, listed by version. The format follows [Keep a Ch
 
 English | [日本語](https://github.com/serpiff/serpiff/blob/main/CHANGELOG-ja.md)
 
+## [0.4.0] - 2026-11-15
+
+### Added
+
+- A new Develop mode. Create a worktree on a new branch (by default under `~/serpiff/workspaces`) and develop with the Claude chat at the center. You can run several chats in parallel in one worktree, and open a terminal with a shell in the selected worktree. You can also register a repository from within the Develop mode. The footer shows your Claude plan's usage (5h, weekly and so on) and the time until it resets
+- A new `serp worktree` command in the CLI. `add`, `list`, `open` and `remove` create, list, open and remove the Develop mode's worktrees, and `chat` (or `add --prompt-file`) starts Claude with a first message without opening the window
+- In the Claude chat, the `↺` on one of your messages rewinds to just before it: the conversation and code, the conversation only, or the code only
+- You can attach images, PDFs and text files to your messages in the Claude chat, with the attach button, drag and drop, or ⌘V (an image on the clipboard)
+- When the app restarts, it returns to where you left off (the session or worktree you had open, the theme, widths, view settings and so on)
+
+### Changed
+
+- While a repository is being deleted, the session list shows a spinner and "Deleting…", and its rows cannot be clicked
+
+### Fixed
+
+- On macOS, closing the window while in full screen left a black screen
+- In dialogs such as the Free plan notice, the button on the left could slide under the buttons on the right and be cut off
+- In the Claude chat, stopping a conversation from another window while it was starting left the reconnected window showing it as running
+
 ## [0.3.12] - 2026-11-11
 
 ### Added
