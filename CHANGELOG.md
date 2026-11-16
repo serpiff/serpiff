@@ -4,6 +4,21 @@ User-facing changes to serpiff, listed by version. The format follows [Keep a Ch
 
 English | [日本語](https://github.com/serpiff/serpiff/blob/main/CHANGELOG-ja.md)
 
+## [0.4.1] - 2026-11-17
+
+### Added
+
+- In the Develop mode, when a worktree's branch has a PR, its number and state (open, draft, merged or closed) appear next to the branch name. Clicking the badge in the header opens the PR on GitHub
+- You can move a session open in Review (a PR or a branch) to the Develop mode as the same session (`Open in Develop` in the header)
+- The Develop mode's footer also shows the review-request chip (`✉ N`). A session opened from its dialog opens in the Review mode
+
+### Changed
+
+- The Develop mode's `New worktree` now takes a single `Branch` input. It tells an existing worktree, a local branch, a branch only on `origin/` and a PR given as `#<number>` apart, and creates or opens a worktree from it. `serp worktree add <branch>` in the CLI follows the same rules and uses an existing branch when you pass one
+- The header's back and forward (`<` `>`) and `?` buttons are gone, and `Viewed patterns` (`✓`) and `Open in Develop` are now buttons. The `[` `]` keys still work
+- The "…" menu now ends with `Setup…` and `Keyboard shortcuts`. The `?` list shows only the shortcuts
+- Range lines are drawn only for units with a checkbox. When a unit continues across an "unchanged blocks" row, the line runs through that row without a break
+
 ## [0.4.0] - 2026-11-15
 
 ### Added
