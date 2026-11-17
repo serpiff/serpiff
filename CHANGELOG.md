@@ -4,6 +4,26 @@ User-facing changes to serpiff, listed by version. The format follows [Keep a Ch
 
 English | [日本語](https://github.com/serpiff/serpiff/blob/main/CHANGELOG-ja.md)
 
+## [0.4.2] - 2026-11-17
+
+### Added
+
+- PR rows in the session list show the Checks result (failing ✕, pending, success ✓). It appears on PR session rows in Review and next to the PR state in the Develop list
+- URLs (http and https) in Claude chat messages are now links you can click to open
+- Code blocks in the Claude chat (including Question answers) have a copy button
+
+### Changed
+
+- The Claude chat input sends on Enter. Check "⌘+Enter to send" below the input to send only on ⌘+Enter
+
+### Fixed
+
+- In the Claude chat, when Claude Code was not logged in or the plan could not be used, the error stayed on screen while the chat kept running, and logging in again did not bring it back. The chat now shows guidance and a "Log in in terminal" button, and after logging in you can continue the conversation
+- In the terminal, Japanese text sometimes appeared as code point notation, and the second character was sometimes dropped when typing quickly
+- Text fields no longer capitalize the start of lines or autocorrect words because of macOS settings
+- In one-line code blocks, the scrollbar no longer covers the text, so you can select it by dragging
+- In the rendered Markdown view, the `!` on sections changed after Viewed is no longer clipped on one-line headings
+
 ## [0.4.1] - 2026-11-17
 
 ### Added
