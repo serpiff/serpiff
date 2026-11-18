@@ -4,6 +4,30 @@ User-facing changes to serpiff, listed by version. The format follows [Keep a Ch
 
 English | [日本語](https://github.com/serpiff/serpiff/blob/main/CHANGELOG-ja.md)
 
+## [0.4.3] - 2026-11-18
+
+### Added
+
+- The Develop screen now shows the PR's Details, Conversations and Checks sections on the right, with a merge entry in the header, so you can follow the PR and merge it without switching to Review. The merge dialog can switch between draft and ready for review
+- The Develop header has an "Open in Review" button that opens the current worktree's session in Review mode
+- When the app restarts for an update, Develop chats that were responding or waiting for permission resume where they left off after launch
+- In the Develop list, a chat whose Claude response finished while nobody was watching shows a bell mark. Opening it clears the mark
+- A branch session in Review now switches to the PR session automatically when a PR opens for that branch (when there are unpushed commits and similar cases, you still switch from the notice as before)
+
+### Changed
+
+- Drafts in the Claude chat input (text and attachments) are kept when you move between worktrees, conversations or right panel tabs. The text is also kept across app restarts
+- "End chat" now ends the conversation and switches to a new one. You can pick the ended conversation from the list to continue it
+- A chat started with a skill (such as `/issue-flow 1171`) is named after the skill
+
+### Fixed
+
+- When part of a worktree's path later became a symbolic link, the Develop chat lost its link to the Claude Code conversation after a restart
+- A chat opened again after a restart no longer stays named "New session"
+- In a worktree with unpushed commits, a warning said the worktree was behind even when it was only ahead of the PR's head. Being ahead is now shown as a notice
+- On macOS 14.5 and similar, Japanese text in the built-in terminal was garbled
+- In the Reviewers section, state labels on rows with and without an action did not line up on the right
+
 ## [0.4.2] - 2026-11-17
 
 ### Added
