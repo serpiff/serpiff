@@ -4,6 +4,30 @@ User-facing changes to serpiff, listed by version. The format follows [Keep a Ch
 
 English | [日本語](https://github.com/serpiff/serpiff/blob/main/CHANGELOG-ja.md)
 
+## [0.4.4] - 2026-11-19
+
+### Added
+
+- The Develop screen can show the diff of a worktree's local work (uncommitted changes, staged changes and new files)
+- In the Develop list, a row whose PR conflicts with its base shows a yellow ▲ mark
+- Repository headings in the Develop list show the owner's avatar. Hovering a heading shows a `+` that creates a worktree
+
+### Changed
+
+- The diff since the last Viewed now also folds unchanged lines, so a few changed lines in a large function are easier to read
+- Deleting a Develop worktree now runs in the background after the dialog closes. Even with a large worktree, you can work with other rows without waiting for the deletion to finish
+- A chat started with a skill (such as `/issue-flow 1171`) is named as soon as the message is sent, without waiting for the response
+- In the Develop list, the bell on a chat whose response finished uses the same colour as the waiting-for-permission mark
+- The failing Checks mark is now an ✕ without a circle, so it is easier to tell apart from the PR's closed mark
+- The Set milestone and Set status dialogs in Details show that the choice is being sent after you pick it
+
+### Fixed
+
+- A worktree created from a PR in the New worktree dialog was not shown as a PR worktree right after creation
+- In the search inputs of the Details and Reviewers dialogs, the Enter that confirms IME conversion was also handled as a dialog action
+- In Details' Projects rows, a long Status name did not fit within the sidebar width. Names that do not fit are now truncated at the end
+- In Details' Projects rows, the position and text size of Status differed between rows where it can be changed and rows where it cannot. There is now also a gap between the colour dot and the value
+
 ## [0.4.3] - 2026-11-18
 
 ### Added
