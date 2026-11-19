@@ -1,7 +1,8 @@
-// Normalizes a GitHub pull request URL to https://github.com/<owner>/<name>/pull/<n>, and tells whether a
-// pathname is a pull request list (/pulls, /pulls/<tab>, /<owner>/<name>/pulls[/<user>|/<filter>/<user>]).
+// Normalizes a GitHub pull request URL to https://github.com/<owner>/<name>/pull/<n>, tells whether a
+// pathname is a pull request list (/pulls, /pulls/<tab>, /<owner>/<name>/pulls[/<user>|/<filter>/<user>]),
+// and builds the serpiff:// URL that opens a PR in Review or Develop.
 // A classic script: the content script loads it before content.js and reads
-// globalThis.serpiffNormalizePrUrl and globalThis.serpiffIsPrListPath; Node tests read module.exports.
+// globalThis.serpiffNormalizePrUrl, serpiffIsPrListPath and serpiffBuildOpenUrl; Node tests read module.exports.
 (function () {
   const NAME = /^[A-Za-z0-9._-]+$/;
   const NUMBER = /^[0-9]+$/;
@@ -38,9 +39,17 @@
     return typeof pathname === 'string' && LIST_PATH.test(pathname);
   }
 
+  // The serpiff:// URL that opens `prUrl` (a normalized PR URL). Review has no `mode` (what older apps accept too);
+  // Develop adds mode=develop.
+  function buildOpenUrl(prUrl, mode) {
+    const base = `serpiff://open?url=${encodeURIComponent(prUrl)}`;
+    return mode === 'develop' ? `${base}&mode=develop` : base;
+  }
+
+  globalThis.serpiffBuildOpenUrl = buildOpenUrl;
   globalThis.serpiffNormalizePrUrl = normalizePrUrl;
   globalThis.serpiffIsPrListPath = isPrListPath;
   if (typeof module !== 'undefined' && module.exports) {
-    module.exports = { normalizePrUrl, isPrListPath };
+    module.exports = { normalizePrUrl, isPrListPath, buildOpenUrl };
   }
 })();

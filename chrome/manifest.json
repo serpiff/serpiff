@@ -3,7 +3,7 @@
   "default_locale": "en",
   "name": "__MSG_extName__",
   "description": "__MSG_extDescription__",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "icons": {
     "16": "icons/16.png",
     "32": "icons/32.png",
@@ -23,7 +23,7 @@
   "content_scripts": [
     {
       "matches": ["https://github.com/*"],
-      "js": ["normalize.js", "logo.js", "content.js"],
+      "js": ["normalize.js", "content.js"],
       "run_at": "document_idle"
     }
   ]

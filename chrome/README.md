@@ -11,10 +11,12 @@ A Chrome extension that opens the GitHub pull request you are viewing in
   `/files` and `/commits/<sha>`), the toolbar button is enabled. Clicking it opens
   `serpiff://open?url=<the PR's URL>`. serpiff opens the PR's session, creating it if it does not exist
   (the same as `serp session add <PR URL> --open`).
-- A serpiff logo button (tooltip: `Open in serpiff`) is also added to the PR header, just after the Code button. It is a plain link to the same
-  `serpiff://` URL. If the header is not found, nothing is added.
+- A pair of buttons, R (Review, tooltip `Open in serpiff (Review)`) and D (Develop, tooltip `Open in serpiff (Develop)`),
+  is also added to the PR header, just after the Code button. They are plain links to `serpiff://` URLs: R opens
+  the same URL as the toolbar button, D adds `&mode=develop`. D opens the PR's Develop worktree if there is one,
+  and otherwise opens the New worktree dialog. If the header is not found, nothing is added.
 - On the pull request lists (`/pulls` and its tabs such as `/pulls/inbox`, and `/<owner>/<name>/pulls` with its
-  `/<user>` and `/<filter>/<user>` paths, with or without query filters), each row gets a small serpiff logo button
+  `/<user>` and `/<filter>/<user>` paths, with or without query filters), each row gets small R and D buttons
   at the right end of its metadata. The toolbar button stays disabled there (it is not a single PR).
 - On every other page the toolbar button is disabled (gray) and nothing is added.
 - The URL passed to serpiff is always normalized to `https://github.com/<owner>/<name>/pull/<n>`
@@ -73,7 +75,7 @@ repository):
 node --test
 ```
 
-`tests/normalize.test.mjs` covers the URL normalization in `normalize.js`.
+`tests/normalize.test.mjs` covers the URL normalization and the `serpiff://` URL building (`buildOpenUrl`) in `normalize.js`.
 
 ## License
 

@@ -35,18 +35,23 @@ test('every getMessage key in the scripts exists in en', () => {
   for (const file of ['content.js', 'background.js']) {
     for (const m of read(file).matchAll(/getMessage\(\s*'([^']+)'/g)) assert.ok(m[1] in en, `${file}: ${m[1]}`);
   }
-  assert.match(read('content.js'), /getMessage\('openInSerpiff'\)/);
-  assert.doesNotMatch(read('content.js'), /'Open in serpiff'/);
+  assert.match(read('content.js'), /getMessage\('openInReview'\)/);
+  assert.match(read('content.js'), /getMessage\('openInDevelop'\)/);
+  assert.doesNotMatch(read('content.js'), /'Open in serpiff/);
 });
 
-test('the English texts are the ones the extension had before', () => {
+test('the English texts of the extension', () => {
   assert.equal(en.extName.message, 'serpiff');
   assert.equal(en.extDescription.message, 'Open the GitHub pull request you are viewing in serpiff, a local code review tool.');
   assert.equal(en.openInSerpiff.message, 'Open in serpiff');
+  assert.equal(en.openInReview.message, 'Open in serpiff (Review)');
+  assert.equal(en.openInDevelop.message, 'Open in serpiff (Develop)');
 });
 
 test('the Japanese texts keep the name and have no comma after は or を', () => {
   assert.equal(ja.extName.message, 'serpiff');
   assert.equal(ja.openInSerpiff.message, 'serpiffで開く');
+  assert.equal(ja.openInReview.message, 'serpiffのReviewで開く');
+  assert.equal(ja.openInDevelop.message, 'serpiffのDevelopで開く');
   for (const { message } of Object.values(ja)) assert.doesNotMatch(message, /[はを]、/);
 });

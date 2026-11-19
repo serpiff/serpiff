@@ -7,8 +7,8 @@
 ## できること
 
 - Pull Requestのページ（`https://github.com/<owner>/<name>/pull/<n>`と、その下の`/files`や`/commits/<sha>`などのページ）ではツールバーのボタンが有効になります。押すと`serpiff://open?url=<PRのURL>`を開き、serpiffがそのPull Requestのセッションを開きます。セッションがなければ作ります（`serp session add <PR URL> --open`と同じです）。
-- PRのヘッダーのCodeボタンのすぐ後ろにも、serpiffのロゴのボタン（ツールチップは`serpiffで開く`）を足します。同じ`serpiff://`のURLへの普通のリンクです。ヘッダーが見つからないときは何も足しません。
-- Pull Requestの一覧（`/pulls`とそのタブ（`/pulls/inbox`など）、`/<owner>/<name>/pulls`とその`/<user>`、`/<filter>/<user>`のパス。クエリのフィルターの有無は問いません）では各行のメタデータの右端に小さなserpiffのロゴのボタンを足します。ここではツールバーのボタンは無効のままです（1つのPull Requestではないため）。
+- PRのヘッダーのCodeボタンのすぐ後ろにも、R（Review。ツールチップは`serpiffのReviewで開く`）とD（Develop。ツールチップは`serpiffのDevelopで開く`）の2つのボタンを並べて足します。どちらも`serpiff://`のURLへの普通のリンクで、Rはツールバーのボタンと同じURL、Dはそれに`&mode=develop`を付けたURLです。DはそのPull RequestのDevelopのワークツリーがあれば開き、なければNew worktreeのダイアログを開きます。ヘッダーが見つからないときは何も足しません。
+- Pull Requestの一覧（`/pulls`とそのタブ（`/pulls/inbox`など）、`/<owner>/<name>/pulls`とその`/<user>`、`/<filter>/<user>`のパス。クエリのフィルターの有無は問いません）では各行のメタデータの右端に小さなRとDのボタンを足します。ここではツールバーのボタンは無効のままです（1つのPull Requestではないため）。
 - ほかのすべてのページではツールバーのボタンは無効（グレー）で、何も足しません。
 - serpiffに渡すURLはいつも`https://github.com/<owner>/<name>/pull/<n>`の形に正規化します（末尾のスラッシュ、サブパス、クエリ、フラグメントは付けません）。
 
@@ -55,7 +55,7 @@ Chromeウェブストアの版を入れていた場合は、この版を読み�
 node --test
 ```
 
-`tests/normalize.test.mjs`は`normalize.js`のURLの正規化を調べます。
+`tests/normalize.test.mjs`は`normalize.js`のURLの正規化と、`serpiff://`のURLの組み立て（`buildOpenUrl`）を調べます。
 
 ## ライセンス
 

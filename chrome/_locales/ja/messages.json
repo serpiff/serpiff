@@ -9,6 +9,14 @@
   },
   "openInSerpiff": {
     "message": "serpiffで開く",
-    "description": "The tooltip of the toolbar button, and the tooltip and accessible name of the serpiff logo buttons added to GitHub pull request pages and lists."
+    "description": "The tooltip of the toolbar button (it opens the pull request in Review)."
+  },
+  "openInReview": {
+    "message": "serpiffのReviewで開く",
+    "description": "The tooltip and accessible name of the R button added to GitHub pull request pages and lists (opens the pull request in serpiff's Review mode)."
+  },
+  "openInDevelop": {
+    "message": "serpiffのDevelopで開く",
+    "description": "The tooltip and accessible name of the D button added to GitHub pull request pages and lists (opens the pull request in serpiff's Develop mode)."
   }
 }

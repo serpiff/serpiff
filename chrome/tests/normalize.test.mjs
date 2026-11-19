@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import { createRequire } from 'node:module';
 import { test } from 'node:test';
 
-const { normalizePrUrl } = createRequire(import.meta.url)('../normalize.js');
+const { normalizePrUrl, buildOpenUrl } = createRequire(import.meta.url)('../normalize.js');
 
 const PR = 'https://github.com/owner/name/pull/12';
 
@@ -99,4 +99,11 @@ test('rejects non-strings', () => {
 test('is also exposed on globalThis for the content script', () => {
   assert.equal(typeof globalThis.serpiffNormalizePrUrl, 'function');
   assert.equal(globalThis.serpiffNormalizePrUrl, normalizePrUrl);
+});
+
+test('buildOpenUrl: Review has no mode, Develop adds mode=develop', () => {
+  const encoded = encodeURIComponent(PR);
+  assert.equal(buildOpenUrl(PR, 'review'), `serpiff://open?url=${encoded}`);
+  assert.equal(buildOpenUrl(PR, 'develop'), `serpiff://open?url=${encoded}&mode=develop`);
+  assert.equal(new URL(buildOpenUrl(PR, 'develop')).searchParams.get('url'), PR);
 });
