@@ -4,6 +4,30 @@ User-facing changes to serpiff, listed by version. The format follows [Keep a Ch
 
 English | [日本語](https://github.com/serpiff/serpiff/blob/main/CHANGELOG-ja.md)
 
+## [0.4.5] - 2026-11-20
+
+### Added
+
+- The Chrome extension now has two buttons, R (open in Review) and D (open in Develop). D opens the Develop worktree of the PR's branch if there is one, and otherwise opens the New worktree dialog for that PR
+- In the dialog that adds review requests, an empty input shows up to five people and Teams you recently requested from serpiff under `Recent`
+- When you go Review → Develop → Review, the diff scrolls back to where you were before switching
+
+### Changed
+
+- Creating a worktree with New worktree in Develop now closes the dialog at once and creates it in the background. The row being created is shown faded with `Creating…`
+- The Details dialogs (Reviewers, Assignees, Labels, Projects, Status, Milestone and Lock) close as soon as you submit, and the write to GitHub continues in the background. A failure is shown in that section with Retry
+- The chat composer is now one frame holding attachments, model, mode, send key, and the send and stop buttons. The send key is chosen from a dropdown: "Enter to send" or "⌘+Enter to send"
+- Close session in the "…" menu of a Develop row is now also offered when the worktree has only one chat. On the last chat, the row stays and the conversation ends, starting a new one
+- In the Develop list, deleting a worktree is offered only in the "…" menu of the worktree's first row
+- In the Develop list, the row button that adds a session has a new icon, so it is easy to tell apart from the `+` that creates a worktree
+
+### Fixed
+
+- After going Review → Develop → Review, part of the diff could be left undrawn, showing only the background colour
+- The automatic viewed-pattern run right after creating a PR session also counted files already marked Viewed on GitHub as files to mark
+- In the Develop list, the "…" menu of the row just above a row being deleted was drawn with the deleting row overlapping it
+- After deleting a Develop worktree's directory by hand, creating one for the same branch with New worktree said the session was already in Review, although it was a Develop session
+
 ## [0.4.4] - 2026-11-19
 
 ### Added
