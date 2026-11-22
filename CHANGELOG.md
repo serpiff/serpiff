@@ -4,6 +4,36 @@ User-facing changes to serpiff, listed by version. The format follows [Keep a Ch
 
 English | [日本語](https://github.com/serpiff/serpiff/blob/main/CHANGELOG-ja.md)
 
+## [0.4.6] - 2026-11-22
+
+### Added
+
+- In the Review diff, a function call on a changed line now has a round mark right after its name showing the callee's state (added or changed in this PR, and whether it is Viewed). Supported languages: Go, TypeScript, JavaScript, Python, Rust, C#, Java, C, C++, Kotlin, Swift and Perl
+- The mark on a call through an interface now sums up the state of its implementations. Cmd+clicking such a call opens the implementations instead of the interface declaration
+- Each row in the definition / implementation list now starts with the call mark, and rows with a mark are listed first
+- The Claude chat now lets you follow sub-agents' progress and contents
+- Typing `/` at the start of the Claude chat's message box now suggests skills and commands
+- Artifacts can now be used in the Claude chat
+- After a Quit, chats that were responding, waiting for permission or running background tasks can be picked and resumed at the next start
+- The headers of Develop and of the screen with no session selected now have a … menu with `Setup…` and `Keyboard shortcuts`
+- The Review footer now shows `🔔 N`, counting the Develop list's bells (finished responses) and permission requests
+
+### Changed
+
+- While an open request from the CLI or the Chrome extension is processed, the window no longer blocks; the header shows `Opening…` instead
+- The confirmation dialogs for the PR actions in Details (Close, Reopen, Convert to draft, Ready for review) now close as soon as they are sent
+- While a question is being answered, you can keep typing in the follow-up box and choose the model
+- Every dialog that can be closed now shows a ✕ at the top right
+- In Review's new session form, confirming a PR number in the picker now moves focus to Create
+
+### Fixed
+
+- Viewed on files without declaration units (yaml, json, sql, etc.) was cleared when a rebase or a merge from main changed only lines unrelated to the PR
+- In C / C++, calls to functions whose body alone changed got no mark when the definition was answered with the header
+- Call marks could be missing when the language server answered slowly on a busy machine
+- The Merge dialog opened in Develop showed `Delete worktree…` while the Setup screen was covering Develop
+- Every language server's error output was logged under the name gopls
+
 ## [0.4.5] - 2026-11-20
 
 ### Added
