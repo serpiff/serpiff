@@ -4,6 +4,21 @@ User-facing changes to serpiff, listed by version. The format follows [Keep a Ch
 
 English | [日本語](https://github.com/serpiff/serpiff/blob/main/CHANGELOG-ja.md)
 
+## [0.4.7] - 2026-11-25
+
+### Added
+
+- In Review, peek cards opened on a declaration in a file that is part of the diff now show the same function call marks as the diff itself. Cmd+clicking a call through an interface whose mark sums up its implementations opens the implementations inside cards too
+
+### Changed
+
+- Label search (Add labels in Details, and Label in the PR picker) now lists candidates by how well their names match what you typed: exact, then prefix, then substring matches
+
+### Fixed
+
+- In repositories with many matching labels, label search could leave out the label whose name is exactly what you typed
+- When a peek card switched to another declaration, a click still waiting from before the switch could open a peek you did not click
+
 ## [0.4.6] - 2026-11-22
 
 ### Added
