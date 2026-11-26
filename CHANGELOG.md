@@ -4,6 +4,24 @@ User-facing changes to serpiff, listed by version. The format follows [Keep a Ch
 
 English | [日本語](https://github.com/serpiff/serpiff/blob/main/CHANGELOG-ja.md)
 
+## [0.4.8] - 2026-11-26
+
+### Added
+
+- In the Claude chat, you can now choose the effort (Low, Medium, High, xHigh, Max) right next to the model in the input box. The default is Medium, and the choice is hidden for models that do not support effort. `serp worktree add` and `serp worktree chat` also take `--effort`
+- When a PR is part of a GitHub stack, the Review and Develop headers now show a chip with its position in the stack. Clicking it lists every entry of the stack, from which you can open the stack's page or move to another entry
+- The Claude chat now shows a button at the bottom right that takes you to the end while you are scrolled away from it. Sending a message also takes you to the end
+
+### Changed
+
+- Links to external pages are now consistently blue (the merge dialog, the purchase terms, the GitHub link in check details, and more)
+
+### Fixed
+
+- In the Claude chat, the model, mode and effort in the input box showed the previous conversation's values from starting a conversation until its first reply
+- When the Claude chat's area changed height (opening or closing the terminal, the input box growing or shrinking, resizing the window, and so on), the position shown at its bottom edge shifted
+- When the Claude chat was hidden while following the end and the conversation went on meanwhile, it did not show the end when it reappeared
+
 ## [0.4.7] - 2026-11-25
 
 ### Added
