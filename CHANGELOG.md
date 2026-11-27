@@ -4,6 +4,20 @@ User-facing changes to serpiff, listed by version. The format follows [Keep a Ch
 
 English | [日本語](https://github.com/serpiff/serpiff/blob/main/CHANGELOG-ja.md)
 
+## [0.4.9] - 2026-11-28
+
+### Added
+
+- In Review's function call marks, calls whose callee has not changed (a declaration outside the diff, an unchanged declaration, or a call through an interface whose implementations are unchanged) now show a gray double circle. The file header shows when call marks are loading or cannot be shown
+
+### Changed
+
+- Opening or closing a peek now aligns the line it was opened from right under the header
+
+### Fixed
+
+- After rewinding a conversation in the Claude chat, later turns ran with a different name instead of the model you chose (such as `opus[1m]`)
+
 ## [0.4.8] - 2026-11-26
 
 ### Added
