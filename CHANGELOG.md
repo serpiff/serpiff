@@ -4,6 +4,17 @@ User-facing changes to serpiff, listed by version. The format follows [Keep a Ch
 
 English | [日本語](https://github.com/serpiff/serpiff/blob/main/CHANGELOG-ja.md)
 
+## [0.4.10] - 2026-11-28
+
+### Added
+
+- Added bots: ongoing Claude chats that belong to no repository worktree, each with its own folder (`~/serpiff/bots/<name>/`) holding its role (`SOUL.md`) and memory (`MEMORY.md`). Create and open them from the Bots section in Develop
+- Bots can now be woken at times you set and sent a message. Scheduled runs never ask for permission: they refuse anything not allowed, and stop after 10 minutes; a schedule turns off after 5 failures in a row
+- When a worktree conversation a bot started with `serp worktree add … --prompt-file` stops, the bot is now woken and handed that conversation's last message as its report
+- Added `Clone from URL` to the repository dialog. Enter a URL or `owner/name`, and serpiff runs `git clone` and then adds the repository
+- Develop can now open a repository with no commits (right after `git init`, or a clone of an empty repository)
+- You can now delete a repository from its heading in the Develop list
+
 ## [0.4.9] - 2026-11-28
 
 ### Added
